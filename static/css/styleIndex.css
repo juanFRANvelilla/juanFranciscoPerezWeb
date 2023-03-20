@@ -1,0 +1,114 @@
+*{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+#header{
+    padding-top: 10px;
+    text-align: center;
+    background-color: rgb(3,48,67);
+    color: aliceblue;
+    height: 100px;
+    width: 100%;
+}
+
+.titulo{
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.block{
+    background-color: transparent;
+    color: rgb(3,48,67);
+    max-width: 40vw;
+    min-width: 350px;
+    padding: 15px; 
+    margin: auto;
+}
+
+
+.fondo{
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: rgb(235, 249, 255);
+}
+
+.fondo:nth-child(2){
+    background-color: rgb(211, 242, 255);
+}
+
+.proyecto{
+    margin-top: 40px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-bottom: 120px; 
+    background-color: rgb(3,48,67);
+    border-radius: 10px;
+    width: 300px;
+    padding: 25px;
+    color: rgb(255, 255, 255);
+}
+.proyecto h3{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.proyecto img{
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+
+#footer{
+    width: 100%;
+    background-color: transparent;
+    padding: 10px;
+}
+
+#footer .block{
+    color: rgb(235, 249, 255); 
+}
+
+.block a{
+    margin-top: 15px;
+    padding: 5px;
+}
+
+#enlace{
+    display: inline-block;
+    background-color: rgb(41, 92, 114);
+    color: rgb(231, 244, 250);
+    margin-top: 20px;
+    margin-right: 14px;
+    border-radius: 2px;
+    padding-left: 10px;
+    padding-top: 6px;
+    height: 35px;
+    text-decoration: none;
+}
+
+
+#enlace:hover{
+    background-color: rgb(231, 244, 250);
+    color: rgb(41, 92, 114);
+    transition: all .4s ease;
+}
+
+span{
+    padding: 5px;
+}
+
+
+body {
+    background-color: rgb(3,48,67);
+    color:rgb(255, 255, 255)
+    font-fa "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a:visited{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
