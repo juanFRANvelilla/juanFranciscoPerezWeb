@@ -77,24 +77,34 @@
     padding: 5px;
 }
 
-#enlace{
+
+.enlace{
     display: inline-block;
     background-color: rgb(41, 92, 114);
     color: rgb(231, 244, 250);
     margin-top: 20px;
-    margin-right: 14px;
     border-radius: 2px;
-    padding-left: 10px;
+    
+    padding-left: 12px;
     padding-top: 6px;
     height: 35px;
     text-decoration: none;
 }
 
 
-#enlace:hover{
+.enlace:hover{
     background-color: rgb(231, 244, 250);
     color: rgb(41, 92, 114);
     transition: all .4s ease;
+}
+
+.enlace:nth-child(2){
+    float: right;
+    margin-right: 10px;
+}
+
+.enlace:nth-child(3){
+    margin-right: 15px;
 }
 
 span{
