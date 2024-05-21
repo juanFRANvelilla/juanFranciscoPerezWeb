@@ -29,7 +29,6 @@
     margin: auto;
 }
 
-
 .fondo{
     padding-top: 50px;
     padding-bottom: 20px;
@@ -39,6 +38,15 @@
 .fondo:nth-child(2){
     background-color: rgb(211, 242, 255);
 }
+
+
+.projectContainer {
+    display: flex; /* Establece el contenedor como un flex container */
+    flex-direction: row;
+    margin: auto; /* Define la dirección de los elementos: de izquierda a derecha */
+    max-width: 50vw;
+  }
+
 
 .proyecto{
     margin-top: 40px; 
@@ -84,7 +92,7 @@
     color: rgb(231, 244, 250);
     margin-top: 20px;
     border-radius: 2px;
-    
+    max-width: 130px;
     padding-left: 12px;
     padding-top: 6px;
     height: 35px;
@@ -122,3 +130,67 @@ a:visited{
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
+
+
+
+
+.proyecto {
+    position: relative;
+    width: 300px; 
+    overflow: hidden;
+}
+
+.proyecto .imagen {
+    width: 100%;
+    display: block;
+}
+
+.proyecto .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(3,48,67,1); 
+    opacity: 0; 
+    transition: opacity 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.proyecto:hover .overlay {
+    opacity: 1;
+}
+
+.contenido {
+    text-align: left;
+    padding: 20px;
+    color: white;
+}
+
+#contenedorEnlaces {
+    margin-top: 10px;
+    display: flex; /* Establece el contenedor como un flex container */
+    flex-direction: column;
+}
+
+
+.tech-tag {
+    display: inline-block; 
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    color: #ffffff; 
+    background-color: #0073e6; 
+    padding: 5px 10px;
+    border-radius: 5px; 
+    margin: 2px; 
+  }
+
+
+
+
+
+
