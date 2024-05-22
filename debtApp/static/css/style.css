@@ -28,10 +28,10 @@
     }
 
     .section-display {
-        display: flex; /* Establece el contenedor como un flex container */
+        display: flex; 
         flex-direction: row;
-        justify-content: space-between; /* Distribuye los items uniformemente por la fila */
-        align-items: center; /* Centra los items verticalmente */
+        justify-content: space-between; 
+        align-items: center; 
     }
 
     #link{  
@@ -47,7 +47,7 @@
 
 
 h1{
-    color: #ffffff;
+    color: #6650a4;
     margin-left: 10px 
     
 }
@@ -61,12 +61,12 @@ h1{
 }
 
 #link{  
-    color: #ffffff;
+    color: #6650a4;
     text-decoration: none;
 }
 
 #link:visited{
-    color: #ffffff;
+    color: #6650a4;
 }
 
 
@@ -74,7 +74,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #6650a4;
+    background-color: #ffffff;
 }
 
 .container {
@@ -99,19 +99,13 @@ body {
     text-align: center;
 }
 
-@media (min-width: 900px) {
-    .section:has(.section-item:nth-child(4)) {
-        max-width: 950px; /* Ancho cuando hay 4 items */
-    }
-}
 
 
 
 .section-display {
     display: flex; 
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between; 
-    gap: 20px;
     align-items: center; 
 }
 
@@ -123,11 +117,11 @@ body {
     align-items: center; 
     /* background-color: #d0ef00;  */
     max-width: 300px;
-    margin: 0 10px; /* Margen opcional para añadir espacio entre los items */
+    margin: 0 10px; 
 }
 
 .section h2 {
-    text-align: center; /* Centra el título */
+    text-align: center; 
 }
 
 
