@@ -23,7 +23,7 @@
 .block{
     background-color: transparent;
     color: rgb(3,48,67);
-    max-width: 40vw;
+    max-width: 650px;
     min-width: 350px;
     padding: 15px; 
     margin: auto;
@@ -79,15 +79,29 @@ a:visited{
 
 
 .projectsWrapper {
+    max-width: 320px;
     display: flex; 
     flex-direction: row;
     margin: auto; 
-    max-width: 50vw;
-    min-width: 300px;
     gap: 35px;
     flex-wrap: nowrap; 
     overflow-x: auto;
   }
+
+@media only screen and (min-width: 900px) {
+    
+.projectsWrapper {
+    
+    max-width: 900px;
+    display: flex; 
+    flex-direction: row;
+    margin: auto; 
+    min-width: 500px; 
+    gap: 35px;
+    flex-wrap: nowrap; 
+    overflow-x: auto;
+  }
+}
 
 
 .projectCard{
