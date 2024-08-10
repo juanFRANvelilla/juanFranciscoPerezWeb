@@ -1,7 +1,6 @@
 h1{
     color: #ffffff;
-    margin-left: 10px 
-    
+    text-align: center;
 }
 
 body {
@@ -11,29 +10,126 @@ body {
     background-color: #6650a4;
 }
 
-.header{
+
+
+.header {
     background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 60px;
-    padding: 5px 10px;
+    justify-content: center; 
+    width: 95%; 
+    max-width: 700px;
+    margin: 0 auto; /* Centra el header horizontalmente */
+    position: relative; /* Permite el uso de position en los elementos hijos */
+    border-bottom-left-radius: 15px; 
+    border-bottom-right-radius: 15px; 
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px;
 }
+
+
+
 
 .header .nav-links{
     list-style: none;
-
+    text-align: center;
+    margin: 0;
+    /* padding-left: 60px; */
+    /* padding-right: 5px; */
+    padding-top: 10px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    gap: 5vw;
+    /* gap: clamp(1px, 50px, 50px); */
 }
+
 
 .header .nav-links li{
     display: inline-block;
-    padding: 0 10px;
 }
 
 .header .nav-links a{
-    font-size: 500px;
+    font-size: 20px;
     color: #6650a4;
+    text-decoration: none;
+    display: block;
+    align-items: center;
 }
+
+
+
+.header .btn button {
+    font-size: 20px;
+    font-weight: 50px;
+    color: #6650a4; 
+    padding: 9px 25px;
+    background-color: #ffffff; 
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button.active {
+    background-color: #6650a4; 
+    color: #ffffff; 
+}
+
+
+
+@media only screen and (max-width: 680px) {
+
+    h1{
+        color: #ffffff;
+        text-align: start;
+    }
+
+    .header .nav-links{
+        gap: 4px;
+    }
+    .header {
+        width: 100%; 
+        border-top-left-radius: 0px; 
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px; 
+        border-bottom-right-radius: 0px; 
+    }
+
+    .header .nav-links{
+        gap: 4px;
+        padding-left: 0px;
+    }
+
+    .header .nav-links a{
+        padding-left: 0px;
+    }
+
+    .header .btn button {
+        font-size: 15px;
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+   
+}
+
+@media only screen and (max-width: 365px) {
+    .header .nav-links{
+        gap: 1px;
+    }
+
+    .header .btn button {
+        font-size: 14px;
+        padding: 5px;
+    }
+    
+}
+
+
+
+
+
 
 
 .section {
@@ -51,7 +147,7 @@ body {
     text-align: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1260px) {
     .section:has(.section-item:nth-child(4)) {
         max-width: 950px; /* Ancho cuando hay 4 items */
     }
@@ -78,7 +174,7 @@ body {
 }
 
 
-@media only screen and (min-width: 1220px) {
+@media only screen and (min-width: 1260px) {
     h1{
         position: fixed;
         color: #6650a4;
@@ -91,7 +187,11 @@ body {
         margin: 0;
         padding: 0;
         background-color: #ffffff;
+        display: flex;
+    flex-direction: column;
     }
+
+    
 
     .header {
         background-color: #6650a4;
@@ -99,58 +199,58 @@ body {
         height: 60px;
         justify-content: center; /* Centra los elementos en el header */
         width: 80%; /* Ajusta el tamaño del header, por ejemplo, al 80% del ancho de la página */
-        max-width: 800px; /* También puedes establecer un ancho máximo si lo deseas */
+        max-width: 750px; /* También puedes establecer un ancho máximo si lo deseas */
         margin: 0 auto; /* Centra el header horizontalmente */
         position: relative; /* Permite el uso de position en los elementos hijos */
-        border-bottom-left-radius: 15px; /* Redondea la esquina inferior izquierda */
-        border-bottom-right-radius: 15px; /* Redondea la esquina inferior derecha */
-    }
-
-
-    .header nav {
-        display: flex;
-        justify-content: space-between;
+        border-bottom-left-radius: 15px; 
+        border-bottom-right-radius: 15px; 
+        border-top-left-radius: 0px; 
+        border-top-right-radius: 0px;
     }
 
     .header .nav-links{
         list-style: none;
+        text-align: center;
+        margin: 0;
+        padding-left: 70px;
+        padding-right: 15px;
+        padding-top: 10px;
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
     }
     
     .header .nav-links li{
         display: inline-block;
-        padding: 0 40px;
-    }
-    .header .nav-links li:hover{
-        transform: scale(1.1);
     }
     
     .header .nav-links a{
         font-size: 20px;
         color: #ffffff;
         text-decoration: none;
+        display: block;
+        align-items: center;
     }
 
-
-
-    .header .btn {
-        margin-left: auto;
-    }
-    
-
-
-    .header .btn button{
+    .header .btn button {
+        font-size: 20px;
         font-weight: 50px;
-        color: #6650a4;
+        color: #ffffff; 
         padding: 9px 25px;
-        background-color: #ffffff;
+        background-color: #6650a4; 
         border: none;
         border-radius: 30px;
         cursor: pointer;
         transition: all 0.3s ease 0s;
     }
-
-    .header .btn button:hover{
-        transform: (1.1);
+    
+    .header .btn button.active {
+        background-color: #ffffff; 
+        color: #6650a4; 
+    }
+    
+    .header .btn button:hover {
+        transform: scale(1.1);
     }
 
     .section {
@@ -188,14 +288,13 @@ body {
 }
 
 
-
-
-#footer{
-    bottom: 0;
-    left: 0;
-    width: 350px;
+#footer {
+    width: 350px;; 
+    text-align: start; 
     padding: 10px;
-    text-align: start;
+    position: static;
+    left: 0; 
+    bottom: 0; 
 }
 
 
@@ -215,7 +314,6 @@ body {
     justify-content: center; 
     text-align: center;
     align-items: center; 
-    /* background-color: #d0ef00;  */
     max-width: 300px;
     margin: 0 10px; 
 }

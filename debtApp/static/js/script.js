@@ -1,35 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("El script se ha cargado y el DOM está listo.");
-    // Selecciona los enlaces y los divs
     const infoLink = document.getElementById('info-link');
     const testLink = document.getElementById('test-link');
     const infoDiv = document.getElementById('info-div');
-    // Asumo que el div para "Probar online" se llama "test-div", cámbialo si es necesario
     const testDiv = document.getElementById('test-div');
+    const footer = document.getElementById('footer');
 
-    // Función para ocultar todos los divs
     function hideAllDivs() {
         infoDiv.style.display = 'none';
         testDiv.style.display = 'none';
+        footer.style.position = 'static'; 
+
+        infoLink.querySelector('button').classList.remove('active');
+        testLink.querySelector('button').classList.remove('active');
     }
 
-    // Función para mostrar el div correspondiente
-    function showDiv(divToShow) {
+    function showDiv(divToShow, buttonToActivate, makeFooterFixed = false) {
         hideAllDivs();
         divToShow.style.display = 'block';
+        buttonToActivate.classList.add('active'); 
+        if (makeFooterFixed) {
+            footer.style.position = 'fixed';
+            footer.style.bottom = '0';
+            footer.style.left = '0';
+        }
     }
 
-    // Configura los event listeners
     infoLink.addEventListener('click', function(event) {
-        event.preventDefault(); // Evita el comportamiento por defecto del enlace
-        showDiv(infoDiv);
+        event.preventDefault(); 
+        showDiv(infoDiv, infoLink.querySelector('button'));
     });
 
     testLink.addEventListener('click', function(event) {
-        event.preventDefault(); // Evita el comportamiento por defecto del enlace
-        showDiv(testDiv);
+        event.preventDefault(); 
+        showDiv(testDiv, testLink.querySelector('button'), true);
     });
 
-    // Muestra el div de información por defecto al cargar la página (opcional)
-    showDiv(infoDiv);
+    showDiv(infoDiv, infoLink.querySelector('button')); 
 });
