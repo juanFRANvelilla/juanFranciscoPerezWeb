@@ -10,12 +10,14 @@
     <link rel="icon" href="static/img/Logo.png">
 </head>
 <body>
+    <h1>DebtApp</h1>
 
     <header class="header"> 
+        
         <nav class="nav-container">
             <ul class="nav-links">
-                <li><a href="">Informacion</a></li>
-                <li><a href="">Probar online</a></li>
+                <li><a href="#" id="info-link">Informacion</a></li>
+                <li><a href="#" id="test-link">Probar online</a></li>
                 <li>
                     <a href="static/apk/app-release.apk" download="app-release.apk" class="btn">
                         <button>Descargar apk</button>
@@ -23,131 +25,145 @@
                 </li>
             </ul>
         </nav>
-        <!-- <a href="" class="btn"><button>Descargar apk</button></a></li> -->
     </header>
 
 
-    <h1>DebtApp</h1>
-    <!-- <p>Click the button below to download the APK:</p>     
-    <a href="static/apk/app-release.apk" download="app-release.apk">
-        <button>Download APK</button>
-    </a> -->
-        <div id="frontend" class="contentxxxx">
-            <div class="section">
-                <h2>Crear usuario</h2>
-                <p>Si no dispones de un usuario desde esta pantalla puedes crearlo. Haciendo uso de la api de Twilio se mandara un código
-                    aleatorio al número de teléfono proporcionado para validar que eres el propietario de este. Dispones de 3 intentos para 
-                    introducir el código
-                </p>
-                <div class="section-display">
-                    <div class="section-item">
-                        <img src="static/img/access/debtAppRegistration.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/access/debtAppRegistrationCode.PNG">
-                        <br>
-                        <img src="static/img/access/debtAppRegistrationSuccess.PNG">
+    
+
+    <div id="test-div">
+        <div class="section">
+            <h2>Probar a traves de apptize</h2>
+            <div class="section-display">
+                <!-- <div class="section-item"> -->
+                    <p>A través de este link vas a poder acceder a un emulador online y probar debt app.
+                        Para acceder a apptize puedes utilizar estas credenciales:
+                        - jajjaja
+                        - contraseña
                         
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/access/debtAppRegistration1attempt.PNG">
-                        <br>
-                        <img src="static/img/access/debtAppRegistrationError.PNG">
-                    </div>
-                </div>
+                    </p>
+                <!-- </div> -->
             </div>
+        </div>
+    </div>
 
 
-
-            <div class="section">
-                <h2>Acceso a la aplicacion</h2>
-                <div class="section-display">
-                    <div class="section-item">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/access/debtAppLogin.PNG">
-                    </div>
-                    <div class="section-item">
-                        <p>Al loguearte de forma exitosa se obtiene el jwToken que servirá para autentificarse dentro de la aplicación</p>
-                    </div>
+    <div id="info-div">
+        <div class="section">
+            <h2>Crear usuario</h2>
+            <p>Si no dispones de un usuario desde esta pantalla puedes crearlo. Haciendo uso de la api de Twilio se mandara un código
+                aleatorio al número de teléfono proporcionado para validar que eres el propietario de este. Dispones de 3 intentos para 
+                introducir el código
+            </p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="static/img/access/debtAppRegistration.PNG">
                 </div>
-            </div>
-
-            <div class="section">
-                <h2>Menu Principal</h2>
-                <p>Desde aquí tenemos una vista rápida sobre nuestro balance indicando con un gráfico la cantidad que debemos y que nos deben, también podemos ver las notificaciones pendientes</p>
-                <div class="section-display">
-                    <div class="section-item">
-                        <img src="static/img/mainMenu/homeWithDebts.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/mainMenu/homeNotifications.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/mainMenu/homeWithoutDebts.PNG">
-                    </div>
+                <div class="section-item">
+                    <img src="static/img/access/debtAppRegistrationCode.PNG">
+                    <br>
+                    <img src="static/img/access/debtAppRegistrationSuccess.PNG">
+                    
                 </div>
-            </div>
-
-            <div class="section">
-                <h2>Contactos</h2>
-                <p>Pantalla desde la que podemos ver nuestros contactos actuales y agregar nuevos. Al mandar solicitud de contacto, se le mostrará como una notificacion al entrar en la app</p>
-                <div class="section-display">
-                    <div class="section-item">
-                        <img src="static/img/contacts/view.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/contacts/sendRequestContact.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/contacts/sendRequestContactSuccess.PNG">
-                        <br>
-                        <img src="static/img/contacts/sendRequestContactError.PNG">
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Crear deuda</h2>
-                <p>Desde aqui podemos crear una deuda de forma sencilla con cualquier contacto que tengamos</p>
-                <div class="section-display">
-                    <div class="section-item">
-                        <img src="static/img/add/select.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/add/filled.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/add/error.PNG">
-                        <p>Hay que respetar las restricciones</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>Deudas pendientes</h2>
-                <p>Esta pantalla nos ofrece informacion sobre las deudas que tenemos pendientes de pagar y de cobrar</p>
-                <div class="section-display">
-                    <div class="section-item">
-                        <img src="static/img/debts/owe.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/debts/owed.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/debts/payoff.PNG">
-                    </div>
-                    <div class="section-item">
-                        <img src="static/img/debts/selectNotification.PNG">
-                    </div>
+                <div class="section-item">
+                    <img src="static/img/access/debtAppRegistration1attempt.PNG">
+                    <br>
+                    <img src="static/img/access/debtAppRegistrationError.PNG">
                 </div>
             </div>
         </div>
 
-        <footer id="footer">
-            <a href="../index.html" id="link">Volver a la pagina principal</a>
-        </footer>
-    
-        
+
+
+        <div class="section">
+            <h2>Acceso a la aplicacion</h2>
+            <div class="section-display">
+                <div class="section-item">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/access/debtAppLogin.PNG">
+                </div>
+                <div class="section-item">
+                    <p>Al loguearte de forma exitosa se obtiene el jwToken que servirá para autentificarse dentro de la aplicación</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Menu Principal</h2>
+            <p>Desde aquí tenemos una vista rápida sobre nuestro balance indicando con un gráfico la cantidad que debemos y que nos deben, también podemos ver las notificaciones pendientes</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="static/img/mainMenu/homeWithDebts.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/mainMenu/homeNotifications.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/mainMenu/homeWithoutDebts.PNG">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contactos</h2>
+            <p>Pantalla desde la que podemos ver nuestros contactos actuales y agregar nuevos. Al mandar solicitud de contacto, se le mostrará como una notificacion al entrar en la app</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="static/img/contacts/view.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/contacts/sendRequestContact.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/contacts/sendRequestContactSuccess.PNG">
+                    <br>
+                    <img src="static/img/contacts/sendRequestContactError.PNG">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Crear deuda</h2>
+            <p>Desde aqui podemos crear una deuda de forma sencilla con cualquier contacto que tengamos</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="static/img/add/select.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/add/filled.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/add/error.PNG">
+                    <p>Hay que respetar las restricciones</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Deudas pendientes</h2>
+            <p>Esta pantalla nos ofrece informacion sobre las deudas que tenemos pendientes de pagar y de cobrar</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="static/img/debts/owe.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/debts/owed.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/debts/payoff.PNG">
+                </div>
+                <div class="section-item">
+                    <img src="static/img/debts/selectNotification.PNG">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <a href="../index.html" id="link">Volver a la pagina principal</a>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+ 
 </body>
 </html>

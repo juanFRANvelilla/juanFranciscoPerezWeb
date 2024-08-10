@@ -105,8 +105,7 @@ body {
         border-bottom-left-radius: 15px; /* Redondea la esquina inferior izquierda */
         border-bottom-right-radius: 15px; /* Redondea la esquina inferior derecha */
     }
-    
-   
+
 
     .header nav {
         display: flex;
