@@ -1,0 +1,39 @@
+html, body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+}
+
+#google-map{
+    border: 1px solid #fff;
+    width: 700px;
+    height: 500px;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.gm-style-iw-ch {
+    height: 0px;
+}
+
+.gm-style-iw-chr {
+    height: 0px;
+}
+
+
+
+/* .feh-content * {
+    font-family: 'uniform', sans-serif;
+    margin-top: 60px;
+}
+
+
+.feh-content h3 {
+    margin-top: -20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 22px;
+
+} */
