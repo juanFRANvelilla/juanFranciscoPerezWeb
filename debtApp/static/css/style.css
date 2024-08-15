@@ -25,8 +25,8 @@ body {
     justify-content: center; 
     width: 95%; 
     max-width: 700px;
-    margin: 0 auto; /* Centra el header horizontalmente */
-    position: relative; /* Permite el uso de position en los elementos hijos */
+    margin: 0 auto; 
+    position: relative;
     border-bottom-left-radius: 15px; 
     border-bottom-right-radius: 15px; 
     border-top-left-radius: 5px; 
@@ -231,11 +231,10 @@ body {
         background-color: #6650a4;
         align-items: center;
         height: 60px;
-        justify-content: center; /* Centra los elementos en el header */
-        width: 80%; /* Ajusta el tamaño del header, por ejemplo, al 80% del ancho de la página */
-        max-width: 750px; /* También puedes establecer un ancho máximo si lo deseas */
-        margin: 0 auto; /* Centra el header horizontalmente */
-        position: relative; /* Permite el uso de position en los elementos hijos */
+        justify-content: center; 
+        max-width: 780px;
+        margin: 0 auto; 
+        position: relative; 
         border-bottom-left-radius: 15px; 
         border-bottom-right-radius: 15px; 
         border-top-left-radius: 0px; 
@@ -298,7 +297,7 @@ body {
         margin-bottom: 120px;
         background-color: #6650a4;
         border-radius: 10px;
-        max-width: 750px; 
+        max-width: 780px; 
         padding-right: 30px;
         color: rgb(255, 255, 255);
         width: 100%;
