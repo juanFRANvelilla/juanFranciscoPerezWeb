@@ -1,3 +1,6 @@
+let fullIncidentList = [];
+
+// Llamar a getTodayIncident() al iniciar la pagina
 document.addEventListener('DOMContentLoaded', (event) => {
     getTodayIncident();
 });
@@ -5,14 +8,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 const btnOpen = document.getElementById('btn-open');
 const btnClosed = document.getElementById('btn-closed');
 
-btnOpen.addEventListener('click', () => {
-    console.log('Botón Abierto presionado');
+document.getElementById('btn-open').addEventListener('click', () => {
+    updateMapWithFilteredIncidents('OPEN');
 });
 
-btnClosed.addEventListener('click', () => {
-    console.log('Botón Cerrado presionado');
+document.getElementById('btn-closed').addEventListener('click', () => {
+    updateMapWithFilteredIncidents('CLOSED');
 });
 
+
+function filterIncidentsByStatus(status) {
+    return fullIncidentList.filter(incident => incident.status === status);
+}
+
+async function updateMapWithFilteredIncidents(status) {
+    const filteredIncidents = filterIncidentsByStatus(status);
+    await initMap(filteredIncidents);
+}
 
 
 const datePicker = document.getElementById('datePicker');
@@ -65,8 +77,8 @@ async function getTodayIncident() {
             throw new Error('Network response was not ok ' + response.statusText);
         }
         const data = await response.json();
-        console.log('Data received:', data);
-        const incidentList = data.incidentList.map(incident => new Incident(
+        console.log('Incidentes recibidos:', data);
+        fullIncidentList = data.incidentList.map(incident => new Incident(
             incident.id,
             incident.date,
             incident.time,
@@ -80,7 +92,7 @@ async function getTodayIncident() {
             incident.incidentResources
         ));
         console.log('abrimos el mapa con los datos');
-        await initMap(incidentList);
+        await initMap(fullIncidentList);
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
@@ -89,7 +101,7 @@ async function getTodayIncident() {
 async function getIncidentByDate(date) {
     try {
         console.log('Hacer llamada para día', date);
-        const formattedDate = encodeURIComponent(date);  // Escapa caracteres especiales en la fecha
+        const formattedDate = encodeURIComponent(date);  
         const url = `http://192.168.0.128:8080/getIncidentByDate?date=${formattedDate}`;
 
         const response = await fetch(url);
@@ -98,7 +110,7 @@ async function getIncidentByDate(date) {
         }
         const data = await response.json();
         console.log('Data received:', data);
-        const incidentList = data.incidentList.map(incident => new Incident(
+        fullIncidentList = data.incidentList.map(incident => new Incident(
             incident.id,
             incident.date,
             incident.time,
@@ -111,7 +123,7 @@ async function getIncidentByDate(date) {
             incident.longitude,
             incident.incidentResources
         ));
-        await initMap(incidentList);
+        await initMap(fullIncidentList);
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
