@@ -1,13 +1,15 @@
 html, body{
     height: 100%;
+    background-color: black;
 }
 
 body{
+    background-color: black;
     display: flex;
 }
 
 #google-map{
-    border: 1px solid #fff;
+    border: 1px solid #533232;
     width: 700px;
     height: 500px;
     align-self: center;
@@ -23,17 +25,3 @@ body{
 }
 
 
-
-/* .feh-content * {
-    font-family: 'uniform', sans-serif;
-    margin-top: 60px;
-}
-
-
-.feh-content h3 {
-    margin-top: -20px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    line-height: 22px;
-
-} */

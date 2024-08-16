@@ -1,4 +1,54 @@
-fetch('http://192.168.0.128:8080/getTodayIncident')  // Asegúrate de que esta URL es correcta
+document.addEventListener('DOMContentLoaded', (event) => {
+    getTodayIncident();
+});
+
+
+
+const datePicker = document.getElementById('datePicker');
+
+function getFormattedDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero
+    const day = String(date.getDate()).padStart(2, '0'); // Add leading zero
+    return `${year}-${month}-${day}`;
+}
+
+// Set the date picker value to today's date
+const today = new Date();
+datePicker.value = getFormattedDate(today);
+
+  // Add an event listener to log the selected date
+datePicker.addEventListener('change', function() {
+    const selectedDate = datePicker.value;  // Get the value of the input
+    if(isCurrentDate(datePicker.value)){
+        getTodayIncident()
+    } else{
+        console.log('No es fecha actual' , datePicker.value)
+        getIncidentByDate(datePicker.value)
+    }
+    console.log(`Selected date: ${selectedDate}`);
+});
+    
+
+    
+
+function isCurrentDate(dateString) {
+    // Create a Date object from the input string
+    const inputDate = new Date(dateString);
+
+    // Get the current date
+    const today = new Date();
+
+    // Compare the year, month, and day
+    return (
+        inputDate.getFullYear() === today.getFullYear() &&
+        inputDate.getMonth() === today.getMonth() &&
+        inputDate.getDate() === today.getDate()
+    );
+}
+
+function getTodayIncident() {
+    fetch('http://192.168.0.128:8080/getTodayIncident')  // Asegúrate de que esta URL es correcta
     .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
@@ -19,11 +69,53 @@ fetch('http://192.168.0.128:8080/getTodayIncident')  // Asegúrate de que esta U
                 incident.longitude,
                 incident.incidentResources
             ));
+            console.log('abrimos el mapa con los datos')
             initMap(incidentList);
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
         });
+}
+
+
+function getIncidentByDate(date) {
+    console.log('Hacer llamapa para dia', date)
+    const formattedDate = encodeURIComponent(date);  // Escapa caracteres especiales en la fecha
+    const url = `http://192.168.0.128:8080/getIncidentByDate?date=${formattedDate}`;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data received:', data);
+            // Procesar los datos e inicializar el mapa
+            const incidentList = data.incidentList.map(incident => new Incident(
+                incident.id,
+                incident.date,
+                incident.time,
+                incident.status,
+                incident.incidentType,
+                incident.address,
+                incident.duration,
+                incident.latitude,
+                incident.longitude,
+                incident.incidentResources
+            ));
+            initMap(incidentList);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+}
+
+
+
+
+
 
 
 
@@ -45,8 +137,6 @@ class Incident {
 
 
 async function initMap(incidentList) {
-
-
     const centerMap = {
         lat: 41.645268810703485, lng:-0.8966871819188688
     }
