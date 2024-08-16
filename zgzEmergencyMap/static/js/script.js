@@ -47,69 +47,63 @@ function isCurrentDate(dateString) {
     );
 }
 
-function getTodayIncident() {
-    fetch('http://192.168.0.128:8080/getTodayIncident')  // Asegúrate de que esta URL es correcta
-    .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Data received:', data);
-            const incidentList = data.incidentList.map(incident => new Incident(
-                incident.id,
-                incident.date,
-                incident.time,
-                incident.status,
-                incident.incidentType,
-                incident.address,
-                incident.duration,
-                incident.latitude,
-                incident.longitude,
-                incident.incidentResources
-            ));
-            console.log('abrimos el mapa con los datos')
-            initMap(incidentList);
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+async function getTodayIncident() {
+    try {
+        const response = await fetch('http://192.168.0.128:8080/getTodayIncident');  // Asegúrate de que esta URL es correcta
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        console.log('Data received:', data);
+        const incidentList = data.incidentList.map(incident => new Incident(
+            incident.id,
+            incident.date,
+            incident.time,
+            incident.status,
+            incident.incidentType,
+            incident.markerIcon,
+            incident.address,
+            incident.duration,
+            incident.latitude,
+            incident.longitude,
+            incident.incidentResources
+        ));
+        console.log('abrimos el mapa con los datos');
+        await initMap(incidentList);
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
 }
 
+async function getIncidentByDate(date) {
+    try {
+        console.log('Hacer llamada para día', date);
+        const formattedDate = encodeURIComponent(date);  // Escapa caracteres especiales en la fecha
+        const url = `http://192.168.0.128:8080/getIncidentByDate?date=${formattedDate}`;
 
-function getIncidentByDate(date) {
-    console.log('Hacer llamapa para dia', date)
-    const formattedDate = encodeURIComponent(date);  // Escapa caracteres especiales en la fecha
-    const url = `http://192.168.0.128:8080/getIncidentByDate?date=${formattedDate}`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Data received:', data);
-            // Procesar los datos e inicializar el mapa
-            const incidentList = data.incidentList.map(incident => new Incident(
-                incident.id,
-                incident.date,
-                incident.time,
-                incident.status,
-                incident.incidentType,
-                incident.address,
-                incident.duration,
-                incident.latitude,
-                incident.longitude,
-                incident.incidentResources
-            ));
-            initMap(incidentList);
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        console.log('Data received:', data);
+        const incidentList = data.incidentList.map(incident => new Incident(
+            incident.id,
+            incident.date,
+            incident.time,
+            incident.status,
+            incident.incidentType,
+            incident.markerIcon,
+            incident.address,
+            incident.duration,
+            incident.latitude,
+            incident.longitude,
+            incident.incidentResources
+        ));
+        await initMap(incidentList);
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
 }
 
 
@@ -120,12 +114,13 @@ function getIncidentByDate(date) {
 
 
 class Incident {
-    constructor(id, date, time, status, incidentType, address, duration, latitude, longitude, incidentResources) {
+    constructor(id, date, time, status, incidentType, markerIcon, address, duration, latitude, longitude, incidentResources) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.status = status;
         this.incidentType = incidentType;
+        this.markerIcon = markerIcon;
         this.address = address;
         this.duration = duration;
         this.latitude = latitude;
@@ -511,16 +506,21 @@ async function initMap(incidentList) {
         ]
     }
 
-    const iconUrl = 'https://images.vexels.com/media/users/3/143424/isolated/preview/2aa6cd7edd894a7cefa4eaf0f5916ee9-rayo-pequeno.png'
+    
+    
+
+
 
     const bounds = new google.maps.LatLngBounds();
 
     const map = new google.maps.Map(document.getElementById('google-map'), mapOptions)
 
     incidentList.forEach(incident => {
+        const iconUrl = selectIcon(incident.markerIcon)
         const marker = new google.maps.Marker({
             position: { lat: incident.latitude, lng: incident.longitude },
             map: map,
+            
             icon: {
                 url: iconUrl,  // URL del icono
                 scaledSize: new google.maps.Size(32, 32),  // Ajusta el tamaño del icono
@@ -547,6 +547,23 @@ async function initMap(incidentList) {
 
 
 
+}
+
+function selectIcon(incident) {
+    const defaultIcon = 'https://images.vexels.com/media/users/3/143424/isolated/preview/2aa6cd7edd894a7cefa4eaf0f5916ee9-rayo-pequeno.png';
+    const fireIcon = 'https://png.pngtree.com/png-vector/20210713/ourmid/pngtree-fire-logo-icon-design-png-image_3591953.jpg';
+    const treeIcon = '/zgzEmergencyMap/static/markerIcons/treeIcon.png'
+    // const treeIcon = 'http://192.168.0.128:8081/zgzEmergencyMap/static/markerIcons/treeIcon.png'
+
+    // Check if the incident string contains "FIRE"
+    if (incident.includes('FIRE')) {
+        return fireIcon;
+    } else if(incident.includes('TREE')){
+        return treeIcon;
+    }
+    else {
+        return defaultIcon;
+    }
 }
 
 
