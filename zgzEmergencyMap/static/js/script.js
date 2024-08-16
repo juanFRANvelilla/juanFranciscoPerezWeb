@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     getTodayIncident();
 });
 
+const btnOpen = document.getElementById('btn-open');
+const btnClosed = document.getElementById('btn-closed');
+
+btnOpen.addEventListener('click', () => {
+    console.log('Botón Abierto presionado');
+});
+
+btnClosed.addEventListener('click', () => {
+    console.log('Botón Cerrado presionado');
+});
+
 
 
 const datePicker = document.getElementById('datePicker');
@@ -553,9 +564,7 @@ function selectIcon(incident) {
     const defaultIcon = 'https://images.vexels.com/media/users/3/143424/isolated/preview/2aa6cd7edd894a7cefa4eaf0f5916ee9-rayo-pequeno.png';
     const fireIcon = 'https://png.pngtree.com/png-vector/20210713/ourmid/pngtree-fire-logo-icon-design-png-image_3591953.jpg';
     const treeIcon = '/zgzEmergencyMap/static/markerIcons/treeIcon.png'
-    // const treeIcon = 'http://192.168.0.128:8081/zgzEmergencyMap/static/markerIcons/treeIcon.png'
 
-    // Check if the incident string contains "FIRE"
     if (incident.includes('FIRE')) {
         return fireIcon;
     } else if(incident.includes('TREE')){
