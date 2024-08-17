@@ -30,7 +30,7 @@ function filterIncidentsByStatus(status) {
     if (status === 'ALL') {
         return fullIncidentList; 
     }
-    mapStyleChoosed = mapStyleDark;
+    // mapStyleChoosed = mapStyleDark;
     return fullIncidentList.filter(incident => incident.status === status);
 }
 
@@ -180,65 +180,94 @@ class Incident {
 
 
 async function initMap(incidentList) {
+    // Define the center of the map
     const centerMap = {
-        lat: 41.645268810703485, lng:-0.8966871819188688
-    }
+        lat: 41.645268810703485,
+        lng: -0.8966871819188688
+    };
 
+    // Initialize the InfoWindow for displaying incident details
     const popupInfo = new google.maps.InfoWindow({
-        minWidth: 300,
-        maxWidth: 300,
+        minWidth: 220,
+        maxWidth: 240,
         height: 400
-    })
+    });
 
+    // Set the map options
     const mapOptions = {
         center: centerMap,
         zoom: 12,
         disableDefaultUI: true,
         styles: mapStyleChoosed
-    }
+    };
 
-    
-    
-
-
-
+    // Create a LatLngBounds object to manage map bounds
     const bounds = new google.maps.LatLngBounds();
 
-    const map = new google.maps.Map(document.getElementById('google-map'), mapOptions)
+    // Create the map instance
+    const map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 
+    // Add markers for each incident
     incidentList.forEach(incident => {
-        const iconUrl = selectIcon(incident.markerIcon)
+        const iconUrl = selectIcon(incident.markerIcon);
         const marker = new google.maps.Marker({
             position: { lat: incident.latitude, lng: incident.longitude },
             map: map,
-            
             icon: {
-                url: iconUrl,  // URL del icono
-                scaledSize: new google.maps.Size(32, 32),  // Ajusta el tamaño del icono
-                origin: new google.maps.Point(0, 0),  // Origen del icono (0,0) por defecto
-                anchor: new google.maps.Point(16, 16)  // Ancla el icono en el centro
+                url: iconUrl,
+                scaledSize: new google.maps.Size(32, 32),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(16, 16)
             }
         });
 
+        // const popup = `
+        //     <div class="incident-info">
+        //         <h2>${incident.incidentType}</h2>
+        //         <h4>${incident.address}</h4>
+        //         <p>Recursos: ${incident.resources.join(', ')}</p>
+        //     </div>
+        // `;
+
         const popup = `
-        <div class="feh-content">
-            <h2>${incident.incidentType}</h2>
-            <h3>${incident.address}</h3>
-            <p>Recursos: ${incident.resources.join(', ')}</p>
-        </div>`;
+            <div class="incident-info">
+                <h2>${incident.incidentType}</h2>
+                <h4>${incident.address}</h4>
+                <p>Recursos:</p>
+                <ul>
+                    ${incident.resources.map(resource => `<li>${resource}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+
 
         google.maps.event.addListener(marker, 'click', function() {
             popupInfo.setContent(popup);
             popupInfo.open(map, marker);
         });
 
+        // Extend the bounds to include the new marker
         bounds.extend(new google.maps.LatLng(incident.latitude, incident.longitude));
-        map.fitBounds(bounds);
     });
 
+    // Fit the map bounds to include all markers
+    map.fitBounds(bounds);
 
-
+    // Set a maximum zoom level once the map has finished loading
+    google.maps.event.addListenerOnce(map, 'idle', function() {
+        const MAX_ZOOM = 12.8;
+        if (map.getZoom() > MAX_ZOOM) {
+            map.setZoom(MAX_ZOOM);
+        }
+    });
 }
+
+
+
+
+
+
+
 
 function selectIcon(incident) {
     const defaultIcon = 'https://images.vexels.com/media/users/3/143424/isolated/preview/2aa6cd7edd894a7cefa4eaf0f5916ee9-rayo-pequeno.png';

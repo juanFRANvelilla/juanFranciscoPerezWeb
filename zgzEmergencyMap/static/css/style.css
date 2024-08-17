@@ -20,13 +20,6 @@ html, body{
 }
 
 
-.gm-style-iw-ch {
-    height: 0px;
-}
-
-.gm-style-iw-chr {
-    height: 0px;
-}
 
 .my-container {
     width: 80%; 
@@ -142,12 +135,64 @@ input:checked + .slider:before {
 
 
 
+.gm-style-iw-ch {
+    height: 0px;
+}
+
+.gm-style-iw-chr {
+    height: 0px;
+}
 
 
-@media only screen and (max-width: 500px) {
-    .datePicker {
+
+
+.incident-info{
+    padding-top: 20px;
+    padding-right: 15px;
+}
+
+.incident-info h2{
+    font-size: 17px;
+}
+
+.incident-info h4{
+    font-size: 14px;
+}
+.incident-info p{
+    font-size: 13px;
+}
+
+.incident-info ul{
+    margin-top: -10px;
+    font-size: 13px;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    #datePicker {
+        width: 135px;
+        margin-left: -20px;
+    }
+
+    
+}
+
+@media only screen and (max-width: 470px) {
+
+    #datePicker {
         width: 125px;
     }
+
+
+    .my-container {
+        width: 100%;
+        border-radius: 0px;
+    }
+
 }
+
 
 
