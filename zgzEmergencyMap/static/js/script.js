@@ -5,22 +5,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
     getTodayIncident();
 });
 
-const btnOpen = document.getElementById('btn-open');
-const btnClosed = document.getElementById('btn-closed');
 
-document.getElementById('btn-open').addEventListener('click', () => {
-    updateMapWithFilteredIncidents('OPEN');
+const divCheckbox = document.getElementById('checkbox')
+
+
+
+const toggleCheckbox = document.getElementById('toggle-checkbox');
+
+toggleCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+        updateMapWithFilteredIncidents('OPEN');
+    } else {
+        updateMapWithFilteredIncidents('ALL');
+    }
 });
-
-document.getElementById('btn-closed').addEventListener('click', () => {
-    updateMapWithFilteredIncidents('CLOSED');
-});
-
 
 function filterIncidentsByStatus(status) {
+    if (status === 'ALL') {
+        return fullIncidentList; // Devuelve todos los incidentes si el estado es 'ALL'
+    }
     return fullIncidentList.filter(incident => incident.status === status);
 }
 
+// Función para actualizar el mapa con los incidentes filtrados
 async function updateMapWithFilteredIncidents(status) {
     const filteredIncidents = filterIncidentsByStatus(status);
     await initMap(filteredIncidents);
@@ -91,7 +98,13 @@ async function getTodayIncident() {
             incident.longitude,
             incident.incidentResources
         ));
-        console.log('abrimos el mapa con los datos');
+        const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
+
+        if (!hasOpenIncidents) {
+            console.log('no hay incidentes abiertos')
+            // document.getElementById('checkbox').style.display = 'none';
+            divCheckbox.style.visibility = 'hidden';
+        }
         await initMap(fullIncidentList);
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
@@ -123,6 +136,11 @@ async function getIncidentByDate(date) {
             incident.longitude,
             incident.incidentResources
         ));
+        const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
+
+        if (!hasOpenIncidents) {
+            divCheckbox.style.visibility = 'hidden';
+        }
         await initMap(fullIncidentList);
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
@@ -161,7 +179,8 @@ async function initMap(incidentList) {
 
     const popupInfo = new google.maps.InfoWindow({
         minWidth: 300,
-        maxWidth: 300
+        maxWidth: 300,
+        height: 400
     })
 
     const mapOptions = {
@@ -574,7 +593,7 @@ async function initMap(incidentList) {
 
 function selectIcon(incident) {
     const defaultIcon = 'https://images.vexels.com/media/users/3/143424/isolated/preview/2aa6cd7edd894a7cefa4eaf0f5916ee9-rayo-pequeno.png';
-    const fireIcon = 'https://png.pngtree.com/png-vector/20210713/ourmid/pngtree-fire-logo-icon-design-png-image_3591953.jpg';
+    const fireIcon = '/zgzEmergencyMap/static/markerIcons/fireIcon2.png';
     const treeIcon = '/zgzEmergencyMap/static/markerIcons/treeIcon.png'
 
     if (incident.includes('FIRE')) {

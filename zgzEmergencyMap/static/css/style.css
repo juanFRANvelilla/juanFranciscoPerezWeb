@@ -2,20 +2,23 @@ html, body{
     height: 100%;
 }
 
-.body-custom{
-    background-color: rgb(255, 128, 0); 
+.body-custom {
+    /* background: linear-gradient(to bottom, 
+        rgb(55, 55, 55) 0%,   
+        rgb(100, 100, 100) 20%, 
+        #FF4500 100%);   */
+        background: linear-gradient(to bottom, 
+        rgb(55, 55, 55) 0%,   
+        rgb(100, 100, 100) 15%, 
+        #FF4500 70%,  /* Ajusta este punto para el rojo */
+        #000000 100%);
     display: flex;
     justify-content: center; 
     align-items: center;
+    height: 100vh; 
+    margin: 0; 
 }
 
-#google-map{
-    border: 1px solid #533232;
-    width: 700px;
-    height: 500px;
-    align-self: center;
-    margin: 0 auto;
-}
 
 .gm-style-iw-ch {
     height: 0px;
@@ -28,8 +31,8 @@ html, body{
 .my-container {
     width: 80%; 
     max-width: 800px; 
-    height: 65%;
-    margin: 0 auto;
+    height: 520px;
+    margin: -140px auto 0;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -54,12 +57,90 @@ html, body{
 }
 
 .div-header{
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .adjust-width{
     width: 180px;
 }
+
+.firefighter-img {
+    display: block;
+    max-width: 350px;
+    height: 200px;
+    margin-left: 20vw  ; 
+    margin-top: 100px;
+    border-radius: 20px;
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+}
+
+
+
+
+
+/* Estilo para el contenedor del switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Ocultar el checkbox original */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Estilo para el slider (el fondo del switch) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+/* Estilo para el círculo dentro del slider */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Cambiar el color de fondo del slider cuando el checkbox está seleccionado */
+input:checked + .slider {
+    background-color: #28a745;
+    background-color: #0091c2;
+}
+
+/* Mover el círculo dentro del slider cuando está seleccionado */
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    margin: 0;
+    margin-left: 8px; /* Añadir margen izquierdo para separar el texto del switch */
+    font-size: 16px;
+    line-height: 34px;
+}
+
+
+
 
 
 @media only screen and (max-width: 500px) {

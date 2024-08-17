@@ -13,12 +13,12 @@
 
     <div class="my-container">
         <div class="row align-items-center div-header">
-            <div class="col-auto">
-                <button type="button" id="btn-open" class="btn btn-success adjust-width">Abiertos</button>
-            </div>
-    
-            <div class="col-auto">
-                <button type="button" id="btn-closed" class="btn btn-danger adjust-width">Incidentes Cerrados</button>
+            <div class="col-auto d-flex align-items-center"  id="checkbox">
+                <label class="switch">
+                    <input type="checkbox" id="toggle-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <label for="toggle-open-closed" class="form-check-label toggle-label">En curso</label>
             </div>
     
             <div class="col-auto ms-auto">
@@ -28,6 +28,9 @@
     
         <div id="google-map" style="height: 400px; margin-top: 20px;"></div>
     </div>
+
+    <!-- <img src="static/img/firefighter.jpeg" class="firefighter-img"> -->
+    <!-- <img src="static/img/firefighter copia.png" class="firefighter-img"> -->
     
 
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1Ds-domna7VHZ7JvzKJcOVTsEORh-Lyc&callback=initMap&loading=async"></script>
