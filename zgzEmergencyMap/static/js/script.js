@@ -12,7 +12,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-const divCheckbox = document.getElementById('checkbox')
+const noIncidentImgDiv = document.getElementById('no-incident-img');
+noIncidentImgDiv.style.display = 'none';
+const noIncidentText = document.getElementById('no-incident-text');
+
+
+const divCheckbox = document.getElementById('checkbox');
+
+const googleMap = document.getElementById('google-map');
 
 
 
@@ -58,7 +65,7 @@ datePicker.value = getFormattedDate(today);
 datePicker.addEventListener('change', function() {
     const selectedDate = datePicker.value;  // Get the value of the input
     if(isCurrentDate(datePicker.value)){
-        getTodayIncident()
+        getTodayIncident(datePicker.value)
     } else{
         console.log('No es fecha actual' , datePicker.value)
         getIncidentByDate(datePicker.value)
@@ -70,13 +77,9 @@ datePicker.addEventListener('change', function() {
     
 
 function isCurrentDate(dateString) {
-    // Create a Date object from the input string
     const inputDate = new Date(dateString);
 
-    // Get the current date
     const today = new Date();
-
-    // Compare the year, month, and day
     return (
         inputDate.getFullYear() === today.getFullYear() &&
         inputDate.getMonth() === today.getMonth() &&
@@ -84,9 +87,39 @@ function isCurrentDate(dateString) {
     );
 }
 
-async function getTodayIncident() {
+function hiddenGoogleMap(dateString){
+    const date = new Date(dateString);
+
+    const formattedDate = date.toLocaleDateString('es-ES', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    });
+
+    googleMap.style.display = 'none'
+    noIncidentImgDiv.style.display = 'flex';
+    noIncidentText.textContent = `Vaya!! no hay incidencias disponibles para el ${formattedDate}`;
+}
+
+function showGoogleMap(){
+    googleMap.style.display = 'flex'
+    noIncidentImgDiv.style.display = 'none';
+}
+
+
+function hiddenCheckBox(){
+    console.log('esconder checkbox')
+    divCheckbox.style.visibility  = 'hidden';
+}
+
+function showCheckBox(){
+    console.log('mostrar check box')
+    divCheckbox.style.visibility  = 'visible'
+}
+
+async function getTodayIncident(date) {
     try {
-        const response = await fetch('http://192.168.0.128:8080/getTodayIncident');  // Asegúrate de que esta URL es correcta
+        const response = await fetch('http://192.168.0.128:8080/getTodayIncident'); 
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -105,14 +138,26 @@ async function getTodayIncident() {
             incident.longitude,
             incident.incidentResources
         ));
-        const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
 
-        if (!hasOpenIncidents) {
-            console.log('no hay incidentes abiertos')
-            // document.getElementById('checkbox').style.display = 'none';
-            divCheckbox.style.visibility = 'hidden';
+        if(fullIncidentList.length == 0){
+            hiddenGoogleMap(date);
+            hiddenCheckBox();
+        } else {
+            showGoogleMap();
+            const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
+            
+            if (!hasOpenIncidents) {
+                hiddenCheckBox();
+            } else {
+                
+                showCheckBox();
+            }
+            
+            console.log('abrir mapa')
+            await initMap(fullIncidentList);
         }
-        await initMap(fullIncidentList);
+        
+        
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
@@ -143,12 +188,23 @@ async function getIncidentByDate(date) {
             incident.longitude,
             incident.incidentResources
         ));
-        const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
-
-        if (!hasOpenIncidents) {
-            divCheckbox.style.visibility = 'hidden';
+        if(fullIncidentList.length == 0){
+            hiddenGoogleMap(date);
+            hiddenCheckBox();
+        } else {
+            showGoogleMap();
+            const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
+            
+            if (!hasOpenIncidents) {
+                hiddenCheckBox();
+            } else {
+                showCheckBox();
+            }
+            
+            console.log('abrir mapa')
+            await initMap(fullIncidentList);
         }
-        await initMap(fullIncidentList);
+
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
@@ -180,6 +236,7 @@ class Incident {
 
 
 async function initMap(incidentList) {
+    console.log('funcion de crear mapa')
     // Define the center of the map
     const centerMap = {
         lat: 41.645268810703485,
@@ -190,7 +247,7 @@ async function initMap(incidentList) {
     const popupInfo = new google.maps.InfoWindow({
         minWidth: 220,
         maxWidth: 240,
-        height: 400
+        height: 300
     });
 
     // Set the map options
@@ -205,7 +262,7 @@ async function initMap(incidentList) {
     const bounds = new google.maps.LatLngBounds();
 
     // Create the map instance
-    const map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+    const map = new google.maps.Map(googleMap, mapOptions);
 
     // Add markers for each incident
     incidentList.forEach(incident => {
@@ -221,18 +278,13 @@ async function initMap(incidentList) {
             }
         });
 
-        // const popup = `
-        //     <div class="incident-info">
-        //         <h2>${incident.incidentType}</h2>
-        //         <h4>${incident.address}</h4>
-        //         <p>Recursos: ${incident.resources.join(', ')}</p>
-        //     </div>
-        // `;
 
         const popup = `
             <div class="incident-info">
-                <h2>${incident.incidentType}</h2>
-                <h4>${incident.address}</h4>
+                <h4>${incident.incidentType}</h4>
+                <p>${incident.address}</p>
+                <p>Inicio: ${incident.time}</p>
+                ${incident.status === 'CLOSED' ? `<p>Duración: ${incident.duration}</p>` : ''}
                 <p>Recursos:</p>
                 <ul>
                     ${incident.resources.map(resource => `<li>${resource}</li>`).join('')}

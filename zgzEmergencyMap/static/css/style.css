@@ -58,7 +58,7 @@ html, body{
     width: 180px;
 }
 
-.firefighter-img {
+/* .firefighter-img {
     display: block;
     max-width: 350px;
     height: 200px;
@@ -68,6 +68,20 @@ html, body{
     position: fixed; 
     bottom: 0;
     left: 0;
+} */
+
+
+#no-incident-img{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#no-incident-img img{
+    max-width: 300px;
+    margin: auto;
 }
 
 
@@ -128,7 +142,7 @@ input:checked + .slider:before {
 
 .toggle-label {
     margin: 0;
-    margin-left: 8px; /* Añadir margen izquierdo para separar el texto del switch */
+    margin-left: 8px; 
     font-size: 16px;
     line-height: 34px;
 }
