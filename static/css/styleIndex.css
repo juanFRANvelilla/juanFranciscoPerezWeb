@@ -6,13 +6,45 @@
 
 
 #header{
-    padding-top: 10px;
+    padding-top: -30px;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
     background-color: rgb(3,48,67);
     color: aliceblue;
     height: 100px;
     width: 100%;
 }
+
+
+
+
+
+#header .titulo{
+    padding-top: 32px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
+/* .flag-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.flag-buttons img {
+    display: inline-block;
+    vertical-align: middle;
+} */
+
+
+
+
 
 .titulo{
     font-family: 'Frank Ruhl Libre', serif;
@@ -176,15 +208,66 @@ a:visited{
     width: 100%; 
 }
 
+.flex-container{
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+}
+
+.links-group {
+    display: flex; 
+    gap: 10px;
+}
+
+.info-item{
+    background-color: rgb(41, 92, 114);
+    color: rgb(231, 244, 250);
+    border-radius: 2px;
+    height: 35px;
+    text-decoration: none;
+    margin-bottom: 20px; 
+    margin-top: 15px;
+
+}
+
+.info-item:hover{
+    background-color: rgb(231, 244, 250);
+    color: rgb(41, 92, 114);
+    transition: all .4s ease;
+}
+
+
+.download-cv {
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin-left: auto;
+}
+
+
+.country-icon{
+    background-color: transparent; 
+    border: none; 
+    padding-left: 10px; 
+    cursor: pointer; 
+    outline: none; 
+}
+
+
+
+
+
+
+
 
 .enlace{
-    display: inline-block;
     background-color: rgb(41, 92, 114);
     color: rgb(231, 244, 250);
     border-radius: 2px;
     max-width: 130px;
     padding-left: 12px;
-    padding-top: 6px;
     height: 35px;
     text-decoration: none;
     margin: 12px; 
@@ -206,6 +289,27 @@ a:visited{
     margin-right: 15px;
 }
 
+
+@media only screen and (max-width: 540px) {
+
+    .flex-container{
+        flex-direction: column;
+        
+        height: 100px;
+    }
+
+    .info-item{
+        margin-bottom: 0px;
+        margin-top: 0px;
+
+    }
+
+    .download-cv { 
+        margin-left: 0;
+        max-width: 210px;
+    }
+
+}
 
 .tech-tag {
     display: inline-block; 
