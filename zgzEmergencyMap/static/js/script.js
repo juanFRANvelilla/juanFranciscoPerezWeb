@@ -15,9 +15,32 @@ const googleMap = document.getElementById('google-map');
 const toggleCheckbox = document.getElementById('toggle-checkbox');
 const datePicker = document.getElementById('datePicker');
 
+// Obtener la fecha actual
+const today = new Date();
+datePicker.value = getFormattedDate(today);
+
+function getFormattedDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero
+    const day = String(date.getDate()).padStart(2, '0'); // Add leading zero
+    return `${year}-${month}-${day}`;
+}
+
+
 // Llamar a getTodayIncident() al iniciar la pagina
 document.addEventListener('DOMContentLoaded', (event) => {
-    getTodayIncident();
+    getTodayIncident(today);
+});
+
+
+// Agregar listener para manejar el cambio de fechas
+datePicker.addEventListener('change', function() {
+    const selectedDate = datePicker.value;  
+    if(isCurrentDate(datePicker.value)){
+        getTodayIncident(datePicker.value)
+    } else{
+        getIncidentByDate(datePicker.value)
+    }
 });
 
 
@@ -31,13 +54,7 @@ toggleCheckbox.addEventListener('change', function() {
     }
 });
 
-function filterIncidentsByStatus(status) {
-    if (status === 'ALL') {
-        return fullIncidentList; 
-    }
-    // mapStyleChoosed = mapStyleDark;
-    return fullIncidentList.filter(incident => incident.status === status);
-}
+
 
 // Función para actualizar el mapa con los incidentes filtrados
 async function updateMapWithFilteredIncidents(status) {
@@ -45,33 +62,14 @@ async function updateMapWithFilteredIncidents(status) {
     await initMap(filteredIncidents);
 }
 
-
-
-function getFormattedDate(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero
-    const day = String(date.getDate()).padStart(2, '0'); // Add leading zero
-    return `${year}-${month}-${day}`;
+// Función que filtra la lista de incidente dependiendo de su status
+function filterIncidentsByStatus(status) {
+    if (status === 'ALL') {
+        return fullIncidentList; 
+    }
+    return fullIncidentList.filter(incident => incident.status === status);
 }
 
-// Set the date picker value to today's date
-const today = new Date();
-datePicker.value = getFormattedDate(today);
-
-  // Add an event listener to log the selected date
-datePicker.addEventListener('change', function() {
-    const selectedDate = datePicker.value;  // Get the value of the input
-    if(isCurrentDate(datePicker.value)){
-        getTodayIncident(datePicker.value)
-    } else{
-        console.log('No es fecha actual' , datePicker.value)
-        getIncidentByDate(datePicker.value)
-    }
-    console.log(`Selected date: ${selectedDate}`);
-});
-    
-
-    
 
 function isCurrentDate(dateString) {
     const inputDate = new Date(dateString);
@@ -111,8 +109,6 @@ function hiddenCheckBox(){
 }
 
 function showCheckBox(){
-    console.log('mostrar check box')
-    
     divCheckbox.style.visibility  = 'visible'
 }
 
@@ -162,6 +158,8 @@ async function getTodayIncident(date) {
         
         
     } catch (error) {
+        hiddenGoogleMap(date);
+        hiddenCheckBox();
         console.error('There has been a problem with your fetch operation:', error);
     }
 }
@@ -209,6 +207,8 @@ async function getIncidentByDate(date) {
         }
 
     } catch (error) {
+        hiddenGoogleMap(date);
+        hiddenCheckBox();
         console.error('There has been a problem with your fetch operation:', error);
     }
 }
@@ -281,17 +281,17 @@ async function initMap(incidentList) {
             }
         });
 
-
         const popup = `
             <div class="incident-info">
                 <h4>${incident.incidentType}</h4>
                 <p>${incident.address}</p>
                 <p>Inicio: ${incident.time}</p>
-                ${incident.status === 'CLOSED' ? `<p>Duración: ${incident.duration}</p>` : ''}
+                ${incident.status === 'CLOSED' && incident.duration ? `<p>Duración: ${incident.duration}</p>` : ''}
+                ${incident.resources && incident.resources.length > 0 ? `
                 <p>Recursos:</p>
                 <ul>
                     ${incident.resources.map(resource => `<li>${resource}</li>`).join('')}
-                </ul>
+                </ul>` : ''}
             </div>
         `;
 
