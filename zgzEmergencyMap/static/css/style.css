@@ -40,6 +40,7 @@ html, body{
     width: 100%;
     height: 500px; 
     border: 2px solid #fe0000;
+    border: 2px solid #949494;
     border-radius: 10px;
 }
 
@@ -82,6 +83,8 @@ html, body{
 #no-incident-img img{
     max-width: 300px;
     margin: auto;
+
+    border-radius: 8px;
 }
 
 
