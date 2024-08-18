@@ -88,11 +88,11 @@ a:visited{
     overflow-x: auto;
   }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1050px) {
     
 .projectsWrapper {
     
-    max-width: 900px;
+    max-width: 1000px;
     display: flex; 
     flex-direction: row;
     margin: auto; 
@@ -170,13 +170,10 @@ a:visited{
     color: white;
 }
 
-#contenedorEnlaces {
+.links-container {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-around; 
     width: 100%; 
-    margin-left: 5px;
-
-    
 }
 
 
