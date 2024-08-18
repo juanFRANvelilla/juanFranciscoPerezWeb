@@ -1,10 +1,19 @@
 import { mapStyleLight } from './mapStyles/mapStyleLight.js';
 import { mapStyleDark } from './mapStyles/mapStyleDark.js';
 
-let mapStyleChoosed = mapStyleLight;
+
 
 
 let fullIncidentList = [];
+
+let mapStyleChoosed = mapStyleLight;
+const noIncidentImgDiv = document.getElementById('no-incident-img');
+noIncidentImgDiv.style.display = 'none';
+const noIncidentText = document.getElementById('no-incident-text');
+const divCheckbox = document.getElementById('checkbox');
+const googleMap = document.getElementById('google-map');
+const toggleCheckbox = document.getElementById('toggle-checkbox');
+const datePicker = document.getElementById('datePicker');
 
 // Llamar a getTodayIncident() al iniciar la pagina
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -12,19 +21,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-const noIncidentImgDiv = document.getElementById('no-incident-img');
-noIncidentImgDiv.style.display = 'none';
-const noIncidentText = document.getElementById('no-incident-text');
 
-
-const divCheckbox = document.getElementById('checkbox');
-
-const googleMap = document.getElementById('google-map');
-
-
-
-const toggleCheckbox = document.getElementById('toggle-checkbox');
-
+// Manejar la accion del checkbox para mostrar solo incidentes en cursos
 toggleCheckbox.addEventListener('change', function() {
     if (this.checked) {
         updateMapWithFilteredIncidents('OPEN');
@@ -48,7 +46,6 @@ async function updateMapWithFilteredIncidents(status) {
 }
 
 
-const datePicker = document.getElementById('datePicker');
 
 function getFormattedDate(date) {
     const year = date.getFullYear();
@@ -108,14 +105,20 @@ function showGoogleMap(){
 
 
 function hiddenCheckBox(){
-    console.log('esconder checkbox')
+    // Asegurar que el check box esta deseleccionado y que no pueda mantenerse seleccionado 
+    toggleCheckbox.checked = false;
     divCheckbox.style.visibility  = 'hidden';
 }
 
 function showCheckBox(){
     console.log('mostrar check box')
+    
     divCheckbox.style.visibility  = 'visible'
 }
+
+
+
+
 
 async function getTodayIncident(date) {
     try {
@@ -316,25 +319,32 @@ async function initMap(incidentList) {
 
 
 
-
-
-
-
-
 function selectIcon(incident) {
-    const defaultIcon = 'https://images.vexels.com/media/users/3/143424/isolated/preview/2aa6cd7edd894a7cefa4eaf0f5916ee9-rayo-pequeno.png';
-    const fireIcon = '/zgzEmergencyMap/static/markerIcons/fireIcon2.png';
-    const treeIcon = '/zgzEmergencyMap/static/markerIcons/treeIcon.png'
+    const icons = {
+        DEFAULT: '/zgzEmergencyMap/static/markerIcons/defaultIcon.png',
+        FIRE: '/zgzEmergencyMap/static/markerIcons/fireIcon.png',
+        TREE: '/zgzEmergencyMap/static/markerIcons/treeIcon.png',
+        TRAFFIC: '/zgzEmergencyMap/static/markerIcons/trafficIcon.png', 
+        ELEVATOR: '/zgzEmergencyMap/static/markerIcons/elevatorIcon.png',
+        CONSTRUCTION: '/zgzEmergencyMap/static/markerIcons/buildIcon.png',
+        ANIMALS: '/zgzEmergencyMap/static/markerIcons/animalIcon.png',
+        DANGEROUSPRODUCT: '/zgzEmergencyMap/static/markerIcons/dangerProductIcon.png',
+        BLOCKED: '/zgzEmergencyMap/static/markerIcons/blockedIcon.png',
+        WATERDRAINAGE: '/zgzEmergencyMap/static/markerIcons/waterIcon.png',
+    };
 
-    if (incident.includes('FIRE')) {
-        return fireIcon;
-    } else if(incident.includes('TREE')){
-        return treeIcon;
+    const defaultIcon = icons.DEFAULT;
+    
+    for (const [key, value] of Object.entries(icons)) {
+        if (incident.includes(key)) {
+            return value;
+        }
     }
-    else {
-        return defaultIcon;
-    }
+
+    return defaultIcon;
 }
+
+
 
 
 
