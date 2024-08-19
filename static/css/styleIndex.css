@@ -17,16 +17,19 @@
 }
 
 
-
-
-
 #header .titulo{
     padding-top: 32px;
     margin: 0;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
 
+
+@media only screen and (max-width: 625px) {
+    #header .titulo{
+        padding-top: 15px;
+    }
 }
 
 
@@ -35,6 +38,7 @@
     font-size: 25px;
     margin-bottom: 10px;
 }
+
 
 .block{
     background-color: transparent;
@@ -54,9 +58,6 @@
 .fondo:nth-child(2){
     background-color: rgb(211, 242, 255);
 }
-
-
-
 
 
 
