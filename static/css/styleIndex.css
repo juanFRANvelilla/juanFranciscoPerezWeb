@@ -241,18 +241,13 @@ a:visited{
 
 
 
-
-
-
-
-
 .enlace{
     display: inline-block;
     background-color: rgb(41, 92, 114);
     color: rgb(231, 244, 250);
     border-radius: 2px;
     max-width: 130px;
-    padding-left: 12px;
+    padding-left: 8px;
     padding-top: 6px;
     height: 35px;
     text-decoration: none;
