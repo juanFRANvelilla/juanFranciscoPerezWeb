@@ -197,7 +197,7 @@ input:checked + .slider:before {
     .body-custom {
         background: linear-gradient(to bottom, 
         #000000 0%,   
-        rgb(100, 100, 100) 5%, 
+        rgb(60, 60, 60) 7%, 
         #FF4500 70%,  
         #000000 100%);
     }
