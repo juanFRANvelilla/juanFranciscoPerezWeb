@@ -96,28 +96,51 @@ a:visited{
 
 
 .projectsWrapper {
-    max-width: 320px;
+    position: relative;
+    max-width: 348px;
     display: flex; 
     flex-direction: row;
     margin: auto; 
-    gap: 35px;
+    gap: 65px;
     flex-wrap: nowrap; 
     overflow-x: auto;
-  }
+    
+}
+
+.icon-scroll{
+    position: absolute;
+    top: 20px; 
+    visibility: visible;
+    color: rgb(3,48,67,1);
+    margin-right: -258px;
+    margin-top: 500px;
+    font-size: 36px;
+}
+
+@media only screen and (min-width: 520px) {
+    .icon-scroll{
+        margin-right: -360px;
+        margin-top: 185px;
+
+    }  
+}
+
 
 @media only screen and (min-width: 1050px) {
+    .icon-scroll{
+        visibility: hidden;
+    }
     
-.projectsWrapper {
-    
-    max-width: 1000px;
-    display: flex; 
-    flex-direction: row;
-    margin: auto; 
-    min-width: 500px; 
-    gap: 35px;
-    flex-wrap: nowrap; 
-    overflow-x: auto;
-  }
+    .projectsWrapper {
+        max-width: 1000px;
+        display: flex; 
+        flex-direction: row;
+        margin: auto; 
+        min-width: 500px; 
+        gap: 35px;
+        flex-wrap: nowrap; 
+        overflow-x: auto;
+    }
 }
 
 
