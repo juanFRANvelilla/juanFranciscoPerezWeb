@@ -194,6 +194,13 @@ input:checked + .slider:before {
 }
 
 @media only screen and (max-width: 470px) {
+    .body-custom {
+        background: linear-gradient(to bottom, 
+        #000000 0%,   
+        rgb(100, 100, 100) 5%, 
+        #FF4500 70%,  
+        #000000 100%);
+    }
 
     #datePicker {
         width: 125px;
