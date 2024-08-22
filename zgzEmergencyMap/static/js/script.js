@@ -14,6 +14,8 @@ const toggleCheckbox = document.getElementById('toggle-checkbox');
 const datePicker = document.getElementById('datePicker');
 const lightStyleButton = document.getElementById('light-style');
 const darkStyleButton = document.getElementById('dark-style');
+const styleSelector = document.getElementById('style-selector');
+
 
 
 
@@ -22,7 +24,6 @@ function handleStyleClick(selectedButton, otherButton, mapStyle) {
     otherButton.classList.remove('selected');
 
     mapStyleChoosed = mapStyle;
-    console.log('estilo seleccionado', mapStyle)
     if(toggleCheckbox.checked){
         initMap(filteredIncidents);
     } else {
@@ -106,6 +107,7 @@ function hiddenGoogleMap(dateString){
     noIncidentText.textContent = `Vaya!! no hay incidencias disponibles para el ${formattedDate}`;
 }
 
+
 function showGoogleMap(){
     googleMap.style.display = 'flex'
     noIncidentImgDiv.style.display = 'none';
@@ -121,6 +123,16 @@ function hiddenCheckBox(){
 function showCheckBox(){
     divCheckbox.style.visibility  = 'visible'
 }
+
+function hiddenStyleSelector(){
+    styleSelector.style.visibility  = 'hidden';
+}
+
+function showStyleSelector(){
+    styleSelector.style.visibility  = 'visible'
+}
+
+
 
 
 
@@ -154,8 +166,10 @@ async function getTodayIncident(date) {
 
         if(fullIncidentList.length == 0){
             hiddenGoogleMap(date);
+            hiddenStyleSelector();
             hiddenCheckBox();
         } else {
+            showStyleSelector();
             showGoogleMap();
             const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
             
@@ -207,7 +221,9 @@ async function getIncidentByDate(date) {
         if(fullIncidentList.length == 0){
             hiddenGoogleMap(date);
             hiddenCheckBox();
+            hiddenStyleSelector();
         } else {
+            showStyleSelector();
             showGoogleMap();
             const hasOpenIncidents = fullIncidentList.some(incident => incident.status === 'OPEN');
             
@@ -337,7 +353,7 @@ async function initMap(incidentList) {
 
 
 function selectIcon(incident) {
-    const icons = {
+    const iconsLight = {
         DEFAULT: '/zgzEmergencyMap/static/markerIcons/defaultIcon.png',
         FIRE: '/zgzEmergencyMap/static/markerIcons/fireIcon.png',
         TREE: '/zgzEmergencyMap/static/markerIcons/treeIcon.png',
@@ -350,6 +366,21 @@ function selectIcon(incident) {
         WATERDRAINAGE: '/zgzEmergencyMap/static/markerIcons/waterIcon.png',
     };
 
+    const iconsDark = {
+        DEFAULT: '/zgzEmergencyMap/static/markerIcons/defaultIcon.png',
+        FIRE: '/zgzEmergencyMap/static/markerIcons/fireIcon.png',
+        TREE: '/zgzEmergencyMap/static/markerIcons/treeIcon.png',
+        TRAFFIC: '/zgzEmergencyMap/static/markerIcons/trafficIcon.png', 
+        ELEVATOR: '/zgzEmergencyMap/static/markerIcons/elevatorIconDark.png',
+        CONSTRUCTION: '/zgzEmergencyMap/static/markerIcons/buildIcon.png',
+        ANIMALS: '/zgzEmergencyMap/static/markerIcons/animalIconDark.png',
+        DANGEROUSPRODUCT: '/zgzEmergencyMap/static/markerIcons/dangerProductIcon.png',
+        BLOCKED: '/zgzEmergencyMap/static/markerIcons/blockedIcon.png',
+        WATERDRAINAGE: '/zgzEmergencyMap/static/markerIcons/waterIconDark.png',
+    };
+
+    const icons = mapStyleChoosed === mapStyleDark ? iconsDark : iconsLight;
+
     const defaultIcon = icons.DEFAULT;
     
     for (const [key, value] of Object.entries(icons)) {
@@ -360,6 +391,31 @@ function selectIcon(incident) {
 
     return defaultIcon;
 }
+
+// function selectIcon(incident) {
+//     const icons = {
+//         DEFAULT: '/zgzEmergencyMap/static/markerIcons/defaultIcon.png',
+//         FIRE: '/zgzEmergencyMap/static/markerIcons/fireIcon.png',
+//         TREE: '/zgzEmergencyMap/static/markerIcons/treeIcon.png',
+//         TRAFFIC: '/zgzEmergencyMap/static/markerIcons/trafficIcon.png', 
+//         ELEVATOR: '/zgzEmergencyMap/static/markerIcons/elevatorIcon.png',
+//         CONSTRUCTION: '/zgzEmergencyMap/static/markerIcons/buildIcon.png',
+//         ANIMALS: '/zgzEmergencyMap/static/markerIcons/animalIcon.png',
+//         DANGEROUSPRODUCT: '/zgzEmergencyMap/static/markerIcons/dangerProductIcon.png',
+//         BLOCKED: '/zgzEmergencyMap/static/markerIcons/blockedIcon.png',
+//         WATERDRAINAGE: '/zgzEmergencyMap/static/markerIcons/waterIcon.png',
+//     };
+
+//     const defaultIcon = icons.DEFAULT;
+    
+//     for (const [key, value] of Object.entries(icons)) {
+//         if (incident.includes(key)) {
+//             return value;
+//         }
+//     }
+
+//     return defaultIcon;
+// }
 
 
 
