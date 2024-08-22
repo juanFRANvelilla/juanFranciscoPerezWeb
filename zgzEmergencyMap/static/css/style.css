@@ -19,6 +19,7 @@ html, body{
 
 
 .my-container {
+    position: relative;
     width: 80%; 
     max-width: 800px; 
     height: 520px;
@@ -29,6 +30,42 @@ html, body{
     background-color: #f9f9f9;
     justify-content: center; 
     align-items: center;
+}
+
+.style-selector{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    /* position: absolute; */
+    top: 2px;
+    left: 42%;
+    max-width: 160px;
+    height: 80px;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.style-button{
+    width: 55px; 
+    height: 65px; 
+    padding: 8px 3px 8px 3px;
+    box-sizing: border-box; 
+    border-radius: 2px;
+
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    background-color: transparent; /* Initial background transparent */
+    transition: background-color 0.3s;
+}
+
+.style-button img{
+    border-radius: 10px;
+}
+
+.selected {
+    background-color: white; /* Background color when selected */
 }
 
 
@@ -48,7 +85,7 @@ html, body{
 }
 
 .div-header{
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .adjust-width{

@@ -12,6 +12,7 @@
 <body class="body-custom">
 
     <div class="my-container">
+        
         <div class="row align-items-center div-header">
             <div class="col-auto d-flex align-items-center"  id="checkbox">
                 <label class="switch">
@@ -19,6 +20,11 @@
                     <span class="slider"></span>
                 </label>
                 <label for="toggle-open-closed" class="form-check-label toggle-label">En curso</label>
+            </div>
+
+            <div class="style-selector col-auto ms-auto">
+                <img src="static/img/light-style.png" alt = "Button Image" class="style-button selected" id="light-style">
+                <img src="static/img/dark-style.png" alt = "Button Image" class="style-button" id="dark-style">
             </div>
     
             <div class="col-auto ms-auto">
@@ -28,7 +34,7 @@
 
         
     
-        <div id="google-map" style="height: 400px; margin-top: 20px;"></div>
+        <div id="google-map" style="height: 400px; margin-top: --20px;"></div>
         <div id="no-incident-img">
             <img src="static/img/notIncident.png" class="firefighter-img">
             <p id="no-incident-text"></p>
@@ -36,9 +42,6 @@
         </div>
         
     </div>
-
-    <!-- <img src="static/img/firefighter.jpeg" class="firefighter-img"> -->
-    <!-- <img src="static/img/firefighter copia.png" class="firefighter-img"> -->
     
 
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1Ds-domna7VHZ7JvzKJcOVTsEORh-Lyc&callback=initMap&loading=async"></script>

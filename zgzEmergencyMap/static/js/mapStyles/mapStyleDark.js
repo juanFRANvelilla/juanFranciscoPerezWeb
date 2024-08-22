@@ -1,28 +1,16 @@
 export const mapStyleDark = [
     {
         "featureType": "all",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#202c3e"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "gamma": 0.01
+                "saturation": 36
             },
             {
-                "lightness": 20
+                "color": "#000000"
             },
             {
-                "weight": "1.39"
-            },
-            {
-                "color": "#ffffff"
+                "lightness": 40
             }
         ]
     },
@@ -31,16 +19,13 @@ export const mapStyleDark = [
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "weight": "0.96"
-            },
-            {
-                "saturation": "9"
-            },
-            {
                 "visibility": "on"
             },
             {
                 "color": "#000000"
+            },
+            {
+                "lightness": 16
             }
         ]
     },
@@ -54,17 +39,41 @@ export const mapStyleDark = [
         ]
     },
     {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
+            },
+            {
+                "weight": 1.2
+            }
+        ]
+    },
+    {
         "featureType": "landscape",
         "elementType": "geometry",
         "stylers": [
             {
-                "lightness": 30
+                "color": "#000000"
             },
             {
-                "saturation": "9"
-            },
-            {
-                "color": "#29446b"
+                "lightness": 20
             }
         ]
     },
@@ -73,64 +82,85 @@ export const mapStyleDark = [
         "elementType": "geometry",
         "stylers": [
             {
-                "saturation": 20
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 20
+                "color": "#000000"
             },
             {
-                "saturation": -20
+                "lightness": 21
             }
         ]
     },
     {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 10
-            },
-            {
-                "saturation": -30
-            }
-        ]
-    },
-    {
-        "featureType": "road",
+        "featureType": "road.highway",
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#193a55"
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
             }
         ]
     },
     {
-        "featureType": "road",
+        "featureType": "road.highway",
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "saturation": 25
+                "color": "#000000"
             },
             {
-                "lightness": 25
+                "lightness": 29
             },
             {
-                "weight": "0.01"
+                "weight": 0.2
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 18
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 19
             }
         ]
     },
     {
         "featureType": "water",
-        "elementType": "all",
+        "elementType": "geometry",
         "stylers": [
             {
-                "lightness": -20
+                "color": "#000000"
+            },
+            {
+                "lightness": 17
             }
         ]
     }

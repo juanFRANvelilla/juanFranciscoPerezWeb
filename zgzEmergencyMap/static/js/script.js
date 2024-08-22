@@ -1,10 +1,8 @@
 import { mapStyleLight } from './mapStyles/mapStyleLight.js';
 import { mapStyleDark } from './mapStyles/mapStyleDark.js';
 
-
-
-
 let fullIncidentList = [];
+let filteredIncidents = []
 
 let mapStyleChoosed = mapStyleLight;
 const noIncidentImgDiv = document.getElementById('no-incident-img');
@@ -14,6 +12,33 @@ const divCheckbox = document.getElementById('checkbox');
 const googleMap = document.getElementById('google-map');
 const toggleCheckbox = document.getElementById('toggle-checkbox');
 const datePicker = document.getElementById('datePicker');
+const lightStyleButton = document.getElementById('light-style');
+const darkStyleButton = document.getElementById('dark-style');
+
+
+
+function handleStyleClick(selectedButton, otherButton, mapStyle) {
+    selectedButton.classList.add('selected');
+    otherButton.classList.remove('selected');
+
+    mapStyleChoosed = mapStyle;
+    console.log('estilo seleccionado', mapStyle)
+    if(toggleCheckbox.checked){
+        initMap(filteredIncidents);
+    } else {
+        initMap(fullIncidentList)
+    }
+
+}
+
+lightStyleButton.addEventListener('click', () => {
+    handleStyleClick(lightStyleButton, darkStyleButton, mapStyleLight);
+});
+
+darkStyleButton.addEventListener('click', () => {
+    handleStyleClick(darkStyleButton, lightStyleButton, mapStyleDark);
+});
+
 
 // Obtener la fecha actual
 const today = new Date();
@@ -48,27 +73,12 @@ datePicker.addEventListener('change', function() {
 // Manejar la accion del checkbox para mostrar solo incidentes en cursos
 toggleCheckbox.addEventListener('change', function() {
     if (this.checked) {
-        updateMapWithFilteredIncidents('OPEN');
+        initMap(filteredIncidents);
     } else {
-        updateMapWithFilteredIncidents('ALL');
+        initMap(fullIncidentList);
     }
 });
 
-
-
-// Función para actualizar el mapa con los incidentes filtrados
-async function updateMapWithFilteredIncidents(status) {
-    const filteredIncidents = filterIncidentsByStatus(status);
-    await initMap(filteredIncidents);
-}
-
-// Función que filtra la lista de incidente dependiendo de su status
-function filterIncidentsByStatus(status) {
-    if (status === 'ALL') {
-        return fullIncidentList; 
-    }
-    return fullIncidentList.filter(incident => incident.status === status);
-}
 
 
 function isCurrentDate(dateString) {
@@ -114,6 +124,10 @@ function showCheckBox(){
 
 
 
+// Filtrar los incidentes que estan 'OPEN' y asignarlo a la variable global
+function filterIncidentsByStatus(status = 'OPEN') {
+    filteredIncidents = fullIncidentList.filter(incident => incident.status === status);
+}
 
 
 async function getTodayIncident(date) {
@@ -148,7 +162,8 @@ async function getTodayIncident(date) {
             if (!hasOpenIncidents) {
                 hiddenCheckBox();
             } else {
-                
+                // Si tiene incidentes 'OPEN' se muestra el checkbox y se asigna esos incidentes a la variable filteredIncidents
+                filterIncidentsByStatus()
                 showCheckBox();
             }
             
@@ -199,6 +214,8 @@ async function getIncidentByDate(date) {
             if (!hasOpenIncidents) {
                 hiddenCheckBox();
             } else {
+                // Si tiene incidentes 'OPEN' se muestra el checkbox y se asigna esos incidentes a la variable filteredIncidents
+                filterIncidentsByStatus()
                 showCheckBox();
             }
             
