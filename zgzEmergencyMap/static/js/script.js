@@ -272,21 +272,18 @@ class Incident {
 
 
 async function initMap(incidentList) {
-    console.log('funcion de crear mapa')
-    // Define the center of the map
+    
     const centerMap = {
         lat: 41.645268810703485,
         lng: -0.8966871819188688
     };
 
-    // Initialize the InfoWindow for displaying incident details
     const popupInfo = new google.maps.InfoWindow({
         minWidth: 220,
         maxWidth: 240,
         height: 300
     });
 
-    // Set the map options
     const mapOptions = {
         center: centerMap,
         zoom: 12,
@@ -294,13 +291,10 @@ async function initMap(incidentList) {
         styles: mapStyleChoosed
     };
 
-    // Create a LatLngBounds object to manage map bounds
     const bounds = new google.maps.LatLngBounds();
 
-    // Create the map instance
     const map = new google.maps.Map(googleMap, mapOptions);
 
-    // Add markers for each incident
     incidentList.forEach(incident => {
         const iconUrl = selectIcon(incident.markerIcon);
         const marker = new google.maps.Marker({

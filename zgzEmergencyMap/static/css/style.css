@@ -25,7 +25,9 @@ html, body{
     max-width: 800px; 
     height: 520px;
     margin: -140px auto 0;
-    padding: 20px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     background-color: #f9f9f9;
@@ -98,9 +100,19 @@ html, body{
         height: 72px;
         left: 50%;
         transform: translateX(-50%);
-        margin-top: 530px;
+        margin-top: 500px;
         max-width: 175px;
         min-width: 175px;
+    }
+
+    .my-container {
+        padding-top: 0px;
+        height: 485px;
+    }
+
+    .row-container{
+        height: 65px;
+        margin-bottom: 0px;
     }
 }
 
