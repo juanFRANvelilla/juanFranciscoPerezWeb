@@ -95,11 +95,11 @@ html, body{
     .style-selector{
         background-color: rgba(255, 255, 255, 0.8);
         position: absolute;
-        height: 70px;
+        height: 72px;
         left: 50%;
         transform: translateX(-50%);
         margin-top: 530px;
-        min-width: 10px;
+        max-width: 175px;
     }
 }
 
