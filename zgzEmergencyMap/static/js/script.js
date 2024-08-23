@@ -364,7 +364,7 @@ function selectIcon(incident) {
         DEFAULT: '/zgzEmergencyMap/static/markerIcons/defaultIcon.png',
         FIRE: '/zgzEmergencyMap/static/markerIcons/fireIcon.png',
         TREE: '/zgzEmergencyMap/static/markerIcons/treeIcon.png',
-        TRAFFIC: '/zgzEmergencyMap/static/markerIcons/trafficIcon.png', 
+        TRAFFIC: '/zgzEmergencyMap/static/markerIcons/trafficIconDark.png', 
         ELEVATOR: '/zgzEmergencyMap/static/markerIcons/elevatorIconDark.png',
         CONSTRUCTION: '/zgzEmergencyMap/static/markerIcons/buildIcon.png',
         ANIMALS: '/zgzEmergencyMap/static/markerIcons/animalIconDark.png',
@@ -386,30 +386,6 @@ function selectIcon(incident) {
     return defaultIcon;
 }
 
-// function selectIcon(incident) {
-//     const icons = {
-//         DEFAULT: '/zgzEmergencyMap/static/markerIcons/defaultIcon.png',
-//         FIRE: '/zgzEmergencyMap/static/markerIcons/fireIcon.png',
-//         TREE: '/zgzEmergencyMap/static/markerIcons/treeIcon.png',
-//         TRAFFIC: '/zgzEmergencyMap/static/markerIcons/trafficIcon.png', 
-//         ELEVATOR: '/zgzEmergencyMap/static/markerIcons/elevatorIcon.png',
-//         CONSTRUCTION: '/zgzEmergencyMap/static/markerIcons/buildIcon.png',
-//         ANIMALS: '/zgzEmergencyMap/static/markerIcons/animalIcon.png',
-//         DANGEROUSPRODUCT: '/zgzEmergencyMap/static/markerIcons/dangerProductIcon.png',
-//         BLOCKED: '/zgzEmergencyMap/static/markerIcons/blockedIcon.png',
-//         WATERDRAINAGE: '/zgzEmergencyMap/static/markerIcons/waterIcon.png',
-//     };
-
-//     const defaultIcon = icons.DEFAULT;
-    
-//     for (const [key, value] of Object.entries(icons)) {
-//         if (incident.includes(key)) {
-//             return value;
-//         }
-//     }
-
-//     return defaultIcon;
-// }
 
 
 
