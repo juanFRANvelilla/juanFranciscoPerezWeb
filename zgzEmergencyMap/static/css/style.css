@@ -100,6 +100,7 @@ html, body{
         transform: translateX(-50%);
         margin-top: 530px;
         max-width: 175px;
+        min-width: 175px;
     }
 }
 
