@@ -12,9 +12,9 @@
 <body class="body-custom">
 
     <div class="my-container">
-        
-        <div class="row align-items-center div-header">
-            <div class="col-auto d-flex align-items-center"  id="checkbox">
+
+        <div class="row-container">
+            <div class="left-position"  id="checkbox">
                 <label class="switch">
                     <input type="checkbox" id="toggle-checkbox">
                     <span class="slider"></span>
@@ -22,23 +22,19 @@
                 <label for="toggle-open-closed" class="form-check-label toggle-label">En curso</label>
             </div>
 
-            <div class="style-selector col-auto ms-auto" id="style-selector">
+            <div class="style-selector" id="style-selector">
                 <div class="style-button selected" id="light-style">
                     <img src="static/img/light-style.png">
                 </div>
                 <div class="style-button" id="dark-style">
                     <img src="static/img/dark-style.png">
                 </div>
-                <!-- <img src="static/img/light-style.png"  class="style-button selected" id="light-style">
-                <img src="static/img/dark-style.png" alt = "Button Image" class="style-button" id="dark-style"> -->
             </div>
     
-            <div class="col-auto ms-auto">
+            <div class="right-position">
                 <input type="date" id="datePicker" class=" adjust-width">
             </div>
         </div>
-
-        
     
         <div id="google-map" style="height: 400px; margin-top: --20px;"></div>
         <div id="no-incident-img">
