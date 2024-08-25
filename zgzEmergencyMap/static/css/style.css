@@ -45,8 +45,10 @@ html, body{
     margin-bottom: 10px;
 }
 
-.left-position{
+.left-position {
     margin-left: 0px;
+    display: flex;
+    align-items: center;
 }
 
 .right-position{
