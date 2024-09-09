@@ -257,6 +257,7 @@ a:visited{
     align-items: center; 
     gap: 10px; 
     margin-left: auto;
+    cursor: pointer;
 }
 
 
@@ -266,6 +267,7 @@ a:visited{
     padding-left: 10px; 
     cursor: pointer; 
     outline: none; 
+    color: rgb(231, 244, 250);
 }
 
 
@@ -300,11 +302,10 @@ a:visited{
 }
 
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 475px) {
 
     .flex-container{
         flex-direction: column;
-        
         height: 100px;
     }
 
@@ -316,7 +317,7 @@ a:visited{
 
     .download-cv { 
         margin-left: 0;
-        max-width: 210px;
+        max-width: 143px;
     }
 
 }
