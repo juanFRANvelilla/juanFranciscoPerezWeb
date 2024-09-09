@@ -144,7 +144,7 @@ function filterIncidentsByStatus(status = 'OPEN') {
 
 async function getTodayIncident(date) {
     try {
-        const response = await fetch('https://zgzemergencymapback.onrender.com/getTodayIncident'); 
+        const response = await fetch('https://zgzemergencymapback-europe.onrender.com/getTodayIncident'); 
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
         }
@@ -197,7 +197,7 @@ async function getIncidentByDate(date) {
     try {
         console.log('Hacer llamada para día', date);
         const formattedDate = encodeURIComponent(date);  
-        const url = `https://zgzemergencymapback.onrender.com/getIncidentByDate?date=${formattedDate}`;
+        const url = `https://zgzemergencymapback-europe.onrender.com/getIncidentByDate?date=${formattedDate}`;
 
         const response = await fetch(url);
         if (!response.ok) {
