@@ -1,0 +1,149 @@
+<div class="portfolio-container" [class.dark-theme]="isDarkTheme()" [class.light-theme]="!isDarkTheme()">
+  
+  <!-- Theme Toggle -->
+  <div class="theme-switch-wrapper">
+    <label for="theme" class="theme">
+      <span class="theme__toggle-wrap">
+        <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark"
+               [checked]="isDarkTheme()" (change)="toggleTheme()">
+        <span class="theme__icon">
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+          <span class="theme__icon-part"></span>
+        </span>
+      </span>
+    </label>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Hola soy Juanfran. <br>
+        Llevo 3 años como desarrollador Full Stack y, si algo he aprendido, es que el uso de la IA no trata solo de escribir código más rápido, sino de no tener límites.
+      </h1>
+
+      <div class="hero-description">
+        <p>
+          Gracias a saber exprimir estas herramientas, he dejado de ser solo el que pica código para empezar a entender y controlar
+          todo lo que pasa en la app. Ya no hay excusa para no ser un perfil todoterreno: hoy puedo comprender todo el flujo del <strong>ciclo de vida</strong>
+          de una aplicación, desde el hover de un botón hasta el flujo de <strong>CI/CD</strong> para automatizar despliegues, pasando por un <strong>testing</strong> que garantice
+          la calidad del código.
+        </p>
+        <p>
+          En este portafolio no solo verás proyectos; verás cómo uso la tecnología para multiplicar lo que soy capaz de hacer. Creo que hoy en día,
+          si sabes usar la IA a tu favor, el abanico de cosas que puedes aprender y dominar no tiene límites.
+        </p>
+      </div>
+
+      <div class="hero-cards" aria-label="Resumen profesional">
+        <article class="hero-card">
+          <div class="hero-card__label">Stack</div>
+          <div class="hero-card__value">Full Stack · Frontend · Backend</div>
+        </article>
+        <article class="hero-card">
+          <div class="hero-card__label">DevOps</div>
+          <div class="hero-card__value">CI/CD · Testing · Automatización</div>
+        </article>
+        <article class="hero-card">
+          <div class="hero-card__label">Experiencia</div>
+          <div class="hero-card__value">+3 años · Proyectos reales</div>
+        </article>
+      </div>
+      <div class="cta-buttons">
+        <a href="#experiencia" class="btn btn-primary">Mi Experiencia</a>
+        <a href="#proyectos" class="btn btn-secondary">Proyectos</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Experiencia (Vertical Timeline) -->
+  <section id="experiencia" class="timeline-section">
+    <h2 class="section-title">Experiencia Profesional</h2>
+    <div class="timeline">
+      
+      <!-- Timeline Item 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Full Stack Developer</h3>
+          <h4>Geograma</h4>
+          <span class="timeline-date">Fecha inicio - Presente</span>
+          <p>
+            [Aquí puedes detallar tus responsabilidades en Geograma: tecnologías empleadas, logros obtenidos, integraciones y mejoras de CI/CD, etc.]
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline Item 2 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Desarrollador</h3>
+          <h4>Grupo Carreras</h4>
+          <span class="timeline-date">Fecha inicio - Fecha fin</span>
+          <p>
+            [Aquí puedes detallar tus responsabilidades en Grupo Carreras: desarrollo de nuevas funcionalidades, mantenimiento, etc.]
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Portafolio / Proyectos -->
+  <section id="proyectos" class="portfolio-section">
+    <h2 class="section-title">Portafolio</h2>
+    <div class="projects-grid">
+      
+      <!-- Proyecto 1 -->
+      <div class="project-card">
+        <div class="project-img-placeholder">
+          <!-- img src="ruta-imagen" alt="Debt App" -->
+          <span>Debt App</span>
+        </div>
+        <div class="project-info">
+          <h3>Debt App</h3>
+          <p>Aplicación mobile para gestionar gastos. (Kotlin, SpringBoot, PostgreSQL)</p>
+          <a href="#" class="btn-link">Ver Proyecto</a>
+        </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="project-card">
+        <div class="project-img-placeholder">
+          <span>Emergency Map</span>
+        </div>
+        <div class="project-info">
+          <h3>ZGZ Emergency Map</h3>
+          <p>Mapa de emergencias diarias. (SpringBoot, PostgreSQL, JS)</p>
+          <a href="#" class="btn-link">Ver Proyecto</a>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="project-card">
+        <div class="project-img-placeholder">
+          <span>Callejero</span>
+        </div>
+        <div class="project-info">
+          <h3>Callejero Zaragoza</h3>
+          <p>Cuestionario sobre la malla de la ciudad. (HTML, CSS, JS)</p>
+          <a href="#" class="btn-link">Ver Proyecto</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 Juan Francisco Pérez Velilla. Todos los derechos reservados.</p>
+  </footer>
+</div>
