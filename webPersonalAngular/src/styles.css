@@ -1,4 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
+}
+
+/* Scrollbar global (mismo estilo que opo-quiz-trainer) */
+:root {
+  --app-primary-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  --app-primary-gradient-hover: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+  --app-primary-solid: #0035c8;
+  --app-scrollbar-track: #000;
+}
+
+html[data-theme='dark'] {
+  --app-scrollbar-track: #000;
+}
+
+/* Override para /debtapp */
+html[data-shell='debtapp'] {
+  --app-primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #6650a4 100%);
+  --app-primary-gradient-hover: linear-gradient(135deg, #a78bfa 0%, #6d28d9 100%);
+  --app-primary-solid: #8b5cf6;
+  --app-scrollbar-track: #f1f1f1;
+}
+
+html[data-shell='debtapp'][data-theme='dark'] {
+  --app-scrollbar-track: #0f172a;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--app-scrollbar-track) !important;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--app-primary-gradient) !important;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--app-primary-gradient-hover) !important;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--app-primary-solid) var(--app-scrollbar-track);
 }
