@@ -80,6 +80,19 @@
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.download-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.download-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .header .btn button.active {
@@ -105,7 +118,7 @@
 
 
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 1260px) {
     .header {
         width: 80%; 
         border-bottom-left-radius: 15px; 
@@ -133,7 +146,7 @@
    
 }
 
-@media only screen and (max-width: 510px) {
+@media only screen and (max-width: 580px) {
     .header {
         width: 100%;
         height: 50px; 
@@ -287,8 +300,35 @@
 
     #info-div .section:last-of-type .section-display {
         overflow-x: auto;
+        overflow-y: hidden;
         justify-content: flex-start;
         padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+
+        /* Scroll horizontal más sutil */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.35) rgba(255, 255, 255, 0.12);
+    }
+
+    #info-div .section:last-of-type .section-display::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    #info-div .section:last-of-type .section-display::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+    }
+
+    #info-div .section:last-of-type .section-display::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.35);
+        border-radius: 999px;
+    }
+
+    #info-div .section:last-of-type .section-display::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
     }
 
     .section-display {
