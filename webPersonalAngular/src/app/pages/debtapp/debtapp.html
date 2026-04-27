@@ -1,4 +1,10 @@
 <div class="debtapp-container">
+    <a routerLink="/" class="back-btn" title="Volver a la página principal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+    </a>
     <h1>DebtApp</h1>
 
     <header class="header"> 
@@ -161,8 +167,4 @@
             </div>
         </div>
     </div>
-
-    <footer id="footer" [style.position]="activeTab === 'test' ? 'fixed' : 'static'" [style.bottom.px]="0" [style.left.px]="0">
-        <a routerLink="/" id="link">Volver a la pagina principal</a>
-    </footer>
 </div>
