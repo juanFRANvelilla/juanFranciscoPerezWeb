@@ -1,0 +1,156 @@
+:host {
+    display: block;
+    background-color: #6650a4; /* Old body style */
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #333; /* Default text color for sections */
+}
+
+.debtapp-container {
+    background-color: #6650a4;
+    padding-bottom: 2rem;
+    min-height: 100vh;
+}
+
+.debtapp-container h1 {
+    color: #ffffff;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.debtapp-container #test-div p {
+    text-align: left;
+}
+
+.header {
+    background-color: #ffffff;
+    align-items: center;
+    height: 60px;
+    display: flex;
+    justify-content: center; 
+    width: 95%; 
+    max-width: 700px;
+    margin: 0 auto; 
+    position: relative;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    text-decoration: none;
+}
+
+.nav-links button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links button:hover, .nav-links button.active {
+    background-color: #f1f1f1;
+    color: #6650a4;
+}
+
+.section {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin: 20px auto; 
+    max-width: 1000px; 
+    width: 90%; 
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.section h2 {
+    color: #333;
+    text-align: center;
+}
+
+.section-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center; 
+}
+
+.section-display img {
+    margin-bottom: 5%;
+}
+
+.section-item {
+    text-align: center;
+    padding: 10px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.section p {
+    text-align: center;
+    color: #333;    
+}
+
+#info-div img {
+    max-width: 100%;
+    height: auto;
+    max-height: 480px; 
+    width: auto; 
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.test-btn {
+    border: none;
+    background-color: #6650a4;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#test-div {
+    display: none; 
+}
+
+#footer {
+    background-color: #ffffff;
+    height: 40px;
+    width: 100%; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer a {
+    text-decoration: none;
+    color: #6650a4;
+    font-weight: bold;
+}

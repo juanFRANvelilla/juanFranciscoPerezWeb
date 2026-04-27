@@ -1,0 +1,167 @@
+<div class="debtapp-container">
+    <h1>DebtApp</h1>
+
+    <header class="header"> 
+        <nav>
+            <ul class="nav-links">
+                <li>
+                    <a href="javascript:void(0)" class="btn" (click)="setActiveTab('info')" [class.active]="activeTab === 'info'">
+                        <button [class.active]="activeTab === 'info'">Información</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="btn" (click)="setActiveTab('test')" [class.active]="activeTab === 'test'">
+                        <button [class.active]="activeTab === 'test'">Demo online</button>
+                    </a>
+                </li>
+                <li>
+                    <a href="assets/debtapp/static/apk/debtApp-release.apk" download="debtApp.apk" class="btn">
+                        <button>Descargar apk <i class="fas fa-download"></i></button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="test-div" [style.display]="activeTab === 'test' ? 'block' : 'none'">
+        <div class="section">
+            <h2>Probar DebtApp a través del emulador de appetize.io</h2>
+            <div class="section-display">
+                <div class="section-item">
+                    <p>A través de este link vas a poder acceder a un emulador online y probar DebtApp.
+                        <br><br> 
+                        Podrás iniciar sesión en la app con estas credenciales:
+                        <br>
+                        +34 111111 
+                        <br>
+                        +34 222222 
+                        <br>
+                        +34 333333 
+                        <br>
+                        Todas ellas con la contraseña: test
+                        <br><br>
+                        También podrás crear un nuevo usuario con un número de teléfono ficticio, el código de seguridad SMS se mostrará.
+                    </p>
+                </div>  
+                <div class="section-item">
+                    <a href="https://appetize.io/app/b_gp3lwrlbus7fhgym3lt2sgsihm" class="btn" target="_blank">
+                        <button class="test-btn">Probar DebtApp</button>
+                    </a>
+                </div>    
+            </div>
+        </div>
+    </div>
+
+
+    <div id="info-div" [style.display]="activeTab === 'info' ? 'block' : 'none'">
+        <div class="section">
+            <h2>Crear usuario</h2>
+            <p>Si no dispones de un usuario desde esta pantalla puedes crearlo. Haciendo uso de la api de Twilio se mandará un código
+                aleatorio al número de teléfono proporcionado para validar que eres el propietario de este. Dispones de 3 intentos para 
+                introducir el código.
+            </p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/access/debtAppRegistration.PNG" alt="Registration">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/access/debtAppRegistrationCode.PNG" alt="Registration Code">
+                    <br>
+                    <img src="assets/debtapp/static/img/access/debtAppRegistrationSuccess.PNG" alt="Registration Success">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/access/debtAppRegistration1attempt.PNG" alt="Registration Attempts">
+                    <br>
+                    <img src="assets/debtapp/static/img/access/debtAppRegistrationError.PNG" alt="Registration Error">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Acceso a la aplicacion</h2>
+            <div class="section-display">
+                <div class="section-item"></div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/access/debtAppLogin.PNG" alt="Login">
+                </div>
+                <div class="section-item">
+                    <p>Al loguearte de forma exitosa se obtiene el jwToken que servirá para autentificarse dentro de la aplicación.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Menu Principal</h2>
+            <p>Desde aquí tenemos una vista rápida sobre nuestro balance indicando con un gráfico la cantidad que debemos y que nos deben, también podemos ver las notificaciones pendientes.</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/mainMenu/homeWithDebts.PNG" alt="Home With Debts">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/mainMenu/homeNotifications.PNG" alt="Home Notifications">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/mainMenu/homeWithoutDebts.PNG" alt="Home Without Debts">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Contactos</h2>
+            <p>Pantalla desde la que podemos ver nuestros contactos actuales y agregar nuevos. Al mandar solicitud de contacto, se le mostrará como una notificacion al entrar en la app.</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/contacts/view.PNG" alt="Contacts View">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/contacts/sendRequestContact.PNG" alt="Send Request Contact">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/contacts/sendRequestContactSuccess.PNG" alt="Contact Success">
+                    <br>
+                    <img src="assets/debtapp/static/img/contacts/sendRequestContactError.PNG" alt="Contact Error">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Crear deuda</h2>
+            <p>Desde aquí podemos crear una deuda de forma sencilla con cualquier contacto que tengamos.</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/add/select.PNG" alt="Select Debt">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/add/filled.PNG" alt="Filled Debt">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/add/error.PNG" alt="Debt Error">
+                    <p>Hay que respetar las restricciones</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Deudas pendientes</h2>
+            <p>Esta pantalla nos ofrece informacion sobre las deudas que tenemos pendientes de pagar y de cobrar.</p>
+            <div class="section-display">
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/debts/owe.PNG" alt="Owe Debt">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/debts/owed.PNG" alt="Owed Debt">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/debts/payoff.PNG" alt="Payoff">
+                </div>
+                <div class="section-item">
+                    <img src="assets/debtapp/static/img/debts/selectNotification.PNG" alt="Debt Notification">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" [style.position]="activeTab === 'test' ? 'fixed' : 'static'" [style.bottom.px]="0" [style.left.px]="0">
+        <a routerLink="/" id="link">Volver a la pagina principal</a>
+    </footer>
+</div>
